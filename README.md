@@ -1,7 +1,7 @@
-# Brief notes on AGI potential
+# Brief notes on understanding intelligence
 Really quick notes for my own reference so pardon the untidyness. Will occasionally copy paste directly from the papers!
 
-Notes focused on papers which in my opinion are delivering interesting algorithmic insights/ advancements towards AGI.
+Notes focused on papers which in my opinion are delivering interesting algorithmic insights/ advancements towards understanding intelligence.
 
 ---
 # Personal Observations
@@ -157,6 +157,50 @@ while iteration < max_iterations:
 - Thoughts
     - No coding required by LM, more like planning/ tool use/ compositions
     - Needs more study on the structured action set selection. what if the set size changes/ actions are different/ erroneous?
+
+### Generative Agents: Interactive Simulacra of Human Behavior
+[[Code](https://github.com/joonspk-research/generative_agents)]
+[[Paper](https://arxiv.org/abs/2304.03442)]
+- Spin up multiple instances of LMs + augmented with memory, each representing an individual character. Let them loose in a Sims-style 2D world, where humans can influence / interact with the environment
+- Ablation studies on access to memory, reflection and planning -- each of them are important
+- Common failures during eval: Failure to retrieve relevant memories, mild hallucination, inheriting overly formal speech/ behavior from underlying LM
+- Their 'Related Work' section did mention cognitive architectures and its pitfalls at that time: "However, their space of action was limited to manually crafted procedural knowledge, and they did not offer a mechanism through which the agents could be inspired to seek new behavior"
+- Emergent behaviors
+    - Info diffusion (ie agents chat and info spreads)
+    - Relationship / interaction memory
+    - Coordination
+- Agent architecture
+    - Memory stream: comprehensive log of observations, reflections and plans
+    - From observation, architecture retrieves relevant memories to determine an action
+    - Retrieved memories also used to form long term plans and higher level reflections, entered into memory stream
+- Memory Retrieval: Scored based on recency, importance and relevance
+- Reflection: Triggered when sum of importance for the latest events exceeds a thr. 
+    - this is impt as raw observations are not as informative; agents need to make inferences over them
+    - Determine what to reflect on by prompting the LM and augmenting with 100 most recent records, to get it to generate high level qns
+    - then use these qns for retrieval, and prompt LM to extract insights and cite the sources
+    - Reflections follow a tree like structure, leaf nodes are observations and the level of abstraction increases as we go up the tree
+- Planning
+    - used to avoid local believability at the expense of global believability, eg having lunch twice
+    - Plans are recursively decomposed
+    - During each new observation, agent can choose to continue or update their existing plan (potentially interacting with the new observation)
+    - Relationships between agents need to be explicitly retrieved.
+- A lot of environment implementation details which I will revisit later
+- Eval via interview!
+    - self knowledge, memory, planning, reactions, reflections
+    - Evaluators rank the believability of the agents response to qns wrt human authored ones
+    - Without reflection, planning and observation, agents are less believable than humans. 
+    - Inclusion of at least one of these components make the agents more believable than humans.
+    - Inclusion of all 3 components result in the highest score
+- Emergence eval
+    - abit hard to do so
+    - social network density increases over time!
+- Limitations    
+    - Hallucination: of the mild kind, eg embellishment, but not extreme ones like claiming something that never happened
+    - Interference from pre-existing knowledge: eg confusion of Adam Smith (neighbor) with an economost of the same name
+    - Less believability as knowlege expands eg upon learning that there is a bar nearby, some agents habitually go there for lunch
+    - Social norms not well grasped (esp when agents are largely language based)
+    - Agents speak quite formally, most likely due to instruction ft
+    - scaling: this expt costs thousands in credits for GPT3.5 for 25 agents over 2 days
 ---
 
 # TODO
