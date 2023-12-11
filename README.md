@@ -82,7 +82,7 @@ Notes focused on papers which in my opinion are delivering interesting algorithm
     - Actions
         - external actions: interact with external envs thru grounding
         - internal actions: interact with internal memories
-            - reasoning: update short term working memory w LLM. read from AND write to working memory. to summarize n distill insights. support learning (by writing results int oLT memory) or decision making (results as additional context for subsequent LLM calls)
+            - reasoning: update short term working memory w LLM. read from AND write to working memory. to summarize n distill insights. support learning (by writing results into LT memory) or decision making (results as additional context for subsequent LLM calls)
             - retrieval: read from long term memory into working memory. various implementations eg rule based, sparse, dense retrieval
                 - eg Voyager uses dense retreival for retrieving skills frm lib, gen agents retrieves relevant events from episodic mem via recency (rule-based) + importance (reasoning-based) and relevance (emb/ dense). DocPrompting uses lib docs, i.e. dense retrieval frm semantic mem
             - learning: write to long term memory
@@ -293,14 +293,33 @@ while iteration < max_iterations:
     - Memory stream: comprehensive log of observations, reflections and plans
     - From observation, architecture retrieves relevant memories to determine an action
     - Retrieved memories also used to form long term plans and higher level reflections, entered into memory stream
-    - In code: spatial and associative memory modules
-        - some hyperparams, eg in perception, need to specify vision radius, attention bandwith, retention.
+    - In code: `persona/memory_structures`
+        - Associative
+            - ConceptNode to handle event, chat and thought. subj, predicate, object
+        - Scratch
+            - some hyperparams, eg in perception, need to specify vision radius, attention bandwith, retention.
+        - Spatial
+            - About getting accessible areas, game objects
         - a lot of hard coded rules. I wonder if these can be learnt?
-    - Main loop in `persona.py`, `.move()` method:
+    - Main loop in `persona.py`, `.move()` method. Details in `persona/cognitive_modules`:
         - Perceive
+            - sequential memory triplet
+            - if new event (observation)
+                - poignancy (ask LM to rate importance)
         - Retrieve
+            - related events n thoughts with same keyword
         - Plan
-        - Reflect
+            - make plans via LM and personal traits
+            - `new_retrieve(importance, relevance, recency)` with focal points on persona's plan, use it n LM to revise plan
+            - after revision, plan is a thought on its own
+            - then get action, use affordances (accessible areas), ask GPT which to go
+            - if there was new observation, decide a random one, then use LM to decide if should react
+                - this then adjusts the current action n schedule n decomposes it
+        - if reflection trigger, `run_reflect` (under `reflect.py`)
+            - generate focal points via LM on the recent accessed thoughts and events, centered on subjects
+            - `new_retrieve` based on these focal points
+            - from these statements, use LM to genereate insights and evidence
+            - each of them r stored as thoughts with poignancy
         - Execute
 - Memory Retrieval: Scored based on recency, importance and relevance
 - Reflection: Triggered when sum of importance for the latest events exceeds a thr. 
@@ -330,7 +349,9 @@ while iteration < max_iterations:
     - Social norms not well grasped (esp when agents are largely language based)
     - Agents speak quite formally, most likely due to instruction ft
     - scaling: this expt costs thousands in credits for GPT3.5 for 25 agents over 2 days
-
+- Engineering tips
+    - gpt response validation at each step + failsafe incase of failure. Need to log this
+    - 
 
 ---
 
