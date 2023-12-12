@@ -283,18 +283,15 @@ while iteration < max_iterations:
 [[Paper](https://arxiv.org/abs/2304.03442)]
 - Spin up multiple instances of LMs + augmented with memory, each representing an individual character. Let them loose in a Sims-style 2D world, where humans can influence / interact with the environment
 - Ablation studies on access to memory, reflection and planning -- each of them are important
-- Common failures during eval: Failure to retrieve relevant memories, mild hallucination, inheriting overly formal speech/ behavior from underlying LM
 - Their 'Related Work' section did mention cognitive architectures and its pitfalls at that time: "However, their space of action was limited to manually crafted procedural knowledge, and they did not offer a mechanism through which the agents could be inspired to seek new behavior"
 - Emergent behaviors
     - Info diffusion (ie agents chat and info spreads)
     - Relationship / interaction memory (their claim, but it seems explicit in their memory module so it is probably not emergent)
     - Coordination
 - Agent architecture (see `persona.py`)
-    - Memory stream: comprehensive log of observations, reflections and plans
-    - From observation, architecture retrieves relevant memories to determine an action
-    - Retrieved memories also used to form long term plans and higher level reflections, entered into memory stream
-    - In code: `persona/memory_structures`
+    - Memory: `persona/memory_structures`
         - Associative
+            - holds the Memory stream, a comprehensive log of observations, reflections and plans
             - ConceptNode to handle event, chat and thought. subj, predicate, object
         - Scratch
             - some hyperparams, eg in perception, need to specify vision radius, attention bandwith, retention.
@@ -302,36 +299,30 @@ while iteration < max_iterations:
             - About getting accessible areas, game objects
         - a lot of hard coded rules. I wonder if these can be learnt?
     - Main loop in `persona.py`, `.move()` method. Details in `persona/cognitive_modules`:
-        - Perceive
+        - Perceive: `perceived = self.perceive(maze)`
             - sequential memory triplet
             - if new event (observation)
-                - poignancy (ask LM to rate importance)
-        - Retrieve
-            - related events n thoughts with same keyword
-        - Plan
+                - ask LM to rate importance (poignancy)
+        - Retrieve: `retrieved = self.retrieve(perceived)`
+            - `retrieve(perceived)`: related events n thoughts with same keyword. will be performed after every perception step, for planning
+            - `new_retreive(focal_points, n_count=30)`: the main memory retreival method, centered around `focal_points`, scored based on recency, importance (poignancy) and relevance (dense ebd)
+        - Plan: `plan = self.plan(maze, personas, new_day, retrieved)`
+            - Why? avoid local believability at the expense of global believability, eg having lunch twice. usually, plans are recursively decomposed
+            - Relationships between agents need to be explicitly retrieved. (a form of associative memory)
             - make plans via LM and personal traits
-            - `new_retrieve(importance, relevance, recency)` with focal points on persona's plan, use it n LM to revise plan
+            - `new_retrieve` with focal points on persona's plan, use it n LM to revise plan
             - after revision, plan is a thought on its own
             - then get action, use affordances (accessible areas), ask GPT which to go
-            - if there was new observation, decide a random one, then use LM to decide if should react
-                - this then adjusts the current action n schedule n decomposes it
-        - if reflection trigger, `run_reflect` (under `reflect.py`)
-            - generate focal points via LM on the recent accessed thoughts and events, centered on subjects
-            - `new_retrieve` based on these focal points
-            - from these statements, use LM to genereate insights and evidence
-            - each of them r stored as thoughts with poignancy
-        - Execute
-- Memory Retrieval: Scored based on recency, importance and relevance
-- Reflection: Triggered when sum of importance for the latest events exceeds a thr. 
-    - this is impt as raw observations are not as informative; agents need to make inferences over them
-    - Determine what to reflect on by prompting the LM and augmenting with 100 most recent records, to get it to generate high level qns
-    - then use these qns for retrieval, and prompt LM to extract insights and cite the sources
-    - Reflections follow a tree like structure, leaf nodes are observations and the level of abstraction increases as we go up the tree
-- Planning
-    - used to avoid local believability at the expense of global believability, eg having lunch twice
-    - Plans are recursively decomposed
-    - During each new observation, agent can choose to continue or update their existing plan (potentially interacting with the new observation)
-    - Relationships between agents need to be explicitly retrieved. (a form of associative memory)
+            - if there was new observation, decide a random one (can we improve this?), then use LM to decide if agent should react to it or continue their existing plan
+                - react: this then adjusts the current action n schedule n decomposes it
+        - if sum of importance for the latest events exceeds a thr, `run_reflect` (under `reflect.py`)
+            - this is impt as raw observations are not as informative; agents need to make inferences over them
+            - What to reflect on? generate focal points via LM on the recent (100) accessed thoughts and events, centered on subjects
+            - `new_retrieve` based on these focal points (what to reflect on)
+            - from these statements, use LM to generate insights and cite the evidence
+            - each of them r stored as thoughts in memory stream with poignancy
+            - Reflections follow a tree like structure, leaf nodes are observations and the level of abstraction increases as we go up the tree
+        - Execute: `self.execute(maze, personas, plan)`
 - A lot of environment implementation details which I will revisit later
 - Eval via interview!
     - self knowledge, memory, planning, reactions, reflections
@@ -343,6 +334,7 @@ while iteration < max_iterations:
     - abit hard to do so
     - social network density increases over time!
 - Limitations    
+    - Failure to retrieve relevant memories
     - Hallucination: of the mild kind, eg embellishment, but not extreme ones like claiming something that never happened
     - Interference from pre-existing knowledge: eg confusion of Adam Smith (neighbor) with an economist of the same name
     - Less believability as knowlege expands eg upon learning that there is a bar nearby, some agents habitually go there for lunch
@@ -351,7 +343,7 @@ while iteration < max_iterations:
     - scaling: this expt costs thousands in credits for GPT3.5 for 25 agents over 2 days
 - Engineering tips
     - gpt response validation at each step + failsafe incase of failure. Need to log this
-    - 
+
 
 ---
 
