@@ -18,7 +18,7 @@ Notes focused on papers which in my opinion are delivering interesting algorithm
 
 
 ### Cognitive Architectures for Language Agents
-[[Repo](https://github.com/ysymyth/awesome-language-agents)]
+[[Repo (lit review)](https://github.com/ysymyth/awesome-language-agents)]
 [[Paper](https://arxiv.org/abs/2309.02427)]
 - Concept paper which proposes "Cognitive Architectures for Language Agents (CoALA), a conceptual framework to systematize diverse methods for LLM-based reasoning, grounding, learning, and decision making as instantiations of language agents in the framework"
     - Use the framework to "highlight gaps and propose actionable directions toward more capable language agents in the future."
@@ -136,7 +136,7 @@ selective table
     - LLMs vs. code: where should agents rely on each? "CoALA thus suggests that good design uses agent code primarily to implement classic, generic planning algorithms - and relies heavily on the LLM for action proposal and evaluation."
 
 
-### Voyager
+### Voyager: An Open-Ended Embodied Agent with Large Language Models
 [[Code](https://github.com/MineDojo/Voyager)]
 [[Paper](https://arxiv.org/pdf/2305.16291.pdf)]
 - Builds on top of MineDojo, from the same team
@@ -149,7 +149,7 @@ selective table
             - error messages from execution
             - environment feedback: eg “I cannot make an iron chestplate because I need: 7 more iron ingots”
             - self-verification: Use another instance of GPT4 as a critic to evaluate feasibility of program given current state (after code  execution) and task, and provide feedback if task fails
-        - iterate till self-verification validates task competion, then add skill to the library. 
+        - iterate till self-verification validates task completion, then add skill to the library. 
         - if agent gets stuck after 4 rounds of code generation, switch to another task from automatic curriculum
     - Skills library: Store ebd of docstring of successful programs in a vector DB to build a skills library. 
         - Prompt components
@@ -305,9 +305,9 @@ while iteration < max_iterations:
                 - ask LM to rate importance (poignancy)
         - Retrieve: `retrieved = self.retrieve(perceived)`
             - `retrieve(perceived)`: related events n thoughts with same keyword. will be performed after every perception step, for planning
-            - `new_retreive(focal_points, n_count=30)`: the main memory retreival method, centered around `focal_points`, scored based on recency, importance (poignancy) and relevance (dense ebd)
+            - `new_retrieve(focal_points, n_count=30)`: the main memory retreival method, centered around `focal_points`, scored based on recency, importance (poignancy) and relevance (dense ebd)
         - Plan: `plan = self.plan(maze, personas, new_day, retrieved)`
-            - Why? avoid local believability at the expense of global believability, eg having lunch twice. usually, plans are recursively decomposed
+            - Why? avoid local believability at the expense of global believability, eg having lunch twice. plans are recursively decomposed
             - Relationships between agents need to be explicitly retrieved. (a form of associative memory)
             - make plans via LM and personal traits
             - `new_retrieve` with focal points on persona's plan, use it n LM to revise plan
@@ -327,12 +327,9 @@ while iteration < max_iterations:
 - Eval via interview!
     - self knowledge, memory, planning, reactions, reflections
     - Evaluators rank the believability of the agents response to qns wrt human authored ones
-    - Without reflection, planning and observation, agents are less believable than humans. 
-    - Inclusion of at least one of these components make the agents more believable than humans.
-    - Inclusion of all 3 components result in the highest score
-- Emergence eval
-    - abit hard to do so
-    - social network density increases over time!
+    - Ablation over reflection, planning and observation
+	    - Without any of these 3 factors, agents are less believable than humans; Inclusion of at least one makes the agents more believable than humans.
+- Emergence eval: social network density increases over time!
 - Limitations    
     - Failure to retrieve relevant memories
     - Hallucination: of the mild kind, eg embellishment, but not extreme ones like claiming something that never happened
@@ -342,11 +339,12 @@ while iteration < max_iterations:
     - Agents speak quite formally, most likely due to instruction ft
     - scaling: this expt costs thousands in credits for GPT3.5 for 25 agents over 2 days
 - Engineering tips
-    - gpt response validation at each step + failsafe incase of failure. Need to log this
+    - gpt response validation at each step + failsafe response incase of failure. Need to log this
 
+### The Rise and Potential of Large Language Model Based Agents: A Survey
+[[Repo (lit review)](https://github.com/WooooDyy/LLM-Agent-Paper-List)]
 
 ---
-
 # TODO
 
 ### Toolformer: Language Models Can Teach Themselves to Use Tools
