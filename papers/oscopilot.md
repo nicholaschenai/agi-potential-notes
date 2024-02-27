@@ -38,6 +38,7 @@ Shows how self-learning (curriculum) boosts scores from zero to SOTA
 - FRIDAY is basically Voyager++ with semantic memory and a wider action space / environment
 	- Voyager didnt decompose task during training tho fn is in repo
 - Most other agents (eg AutoGPT) do not have a curriculum manager like FRIDAY or Voyager
+- No ablations to Voyager?
 
 ---
 # Main strategies used to obtain results
@@ -73,7 +74,7 @@ na
 - executor 
 	- interestingly contains a Fake Parameter Identification task!
 - critic 
-	- 1) Determining whether the current sub-task is completed through the analysis of execution results and the environmental state. (like voyager)
+	- (1) Determining whether the current sub-task is completed through the analysis of execution results and the environmental state. (like voyager)
 	- (2) In the event of failed completion, offering a comprehensive error analysis and providing suggestions for correction of tools or actions (how tools are called). 
 	- (3) Assessing the necessity for restructuring subtasks, including the addition of new subtasks or modifications to the content and dependencies of existing subtasks.
 	- if fail, reattempt till 3 times, like Voyager
@@ -99,3 +100,9 @@ Challenge: Heterogeneity inherent in the OS ecosystem. Unified interface is requ
 - FRIDAY excels at processing coding and file I/O, while showing weaknesses in web browsing and handling multi-modality. FRIDAY currently only supports retrieving information from a website and can not perform actions within the web, such as clicks.
 - enhance FRIDAY’s web browsing capability by incorporating recent advancements in web agents (Deng et al., 2023). 
 - Challenges in multi-modal tasks arise from the need for downloading and deploying local models (e.g., speech-to-text). We believe that incorporating recent efforts like HuggingfaceGPT (Shen et al., 2023) can substantially enhance the FRIDAY’s multi-modal capabilities.
+
+## Implementation details
+- agent and all modules (planning, retrieval, execution) share an `action_lib` which is skills library, connection to chromaDB. so its just multiple connections to the same db
+- What is the space over the OS? currently OS-Copilot repo still isn't up yet. 
+	- The low level actions can be found at https://github.com/OS-Copilot/FRIDAY/tree/main/friday/atom_action
+	- Appears to be some file interactions, basic shell commands, querying OS / package/ file data
