@@ -128,14 +128,8 @@ selective table
 ---
 
 # Soar overview
-- "Soar stores productions in long-term memory and executes them based on how well their preconditions match working memory. These productions specify actions that modify the contents of working and long-term memory". These actions may also be external (eg motor command)
-- procedural: production system itself. "the set of rules that can be applied to working memory to determine the agent's behavior"
 - Decision making: Fig 2B
-	- Productions stored in procedural mem
 	- each decision cycle: their preconditions are checked against the agent's working memory
 	- proposal and evaluation phase: a set of productions is used to generate and rank a candidate set of possible actions (see operators vs rules footnote)
-	- choose best action (break ties via created subgoal)
-	- Another set of productions is then used to implement the action
 - Learning
-	- RL can be used to up-weight productions that yielded good outcomes
 	- Soar can write new productions into its procedural memory, effectively updating its source code!
