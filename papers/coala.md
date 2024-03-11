@@ -63,7 +63,7 @@ agent's knowledge about the world and itself. (eg initialized from external db, 
 - possible to write to procedural memory but riskier than writing to semantic or episodic memory as this can introduce bugs or safety concerns (akin to Voyager writing wrong code in skills library)
 ## Actions
 external actions: interact with external envs thru grounding
-### internal actions: interact with internal memories
+### Internal actions: interact with internal memories
 - reasoning: update short term working memory w LLM. read from AND write to working memory. to summarize n distill insights. support learning (by writing results into LT memory) or decision making (results as additional context for subsequent LLM calls)
 - retrieval: read from long term memory into working memory. various implementations eg rule based, sparse, dense retrieval
 	- eg Voyager uses dense retreival for retrieving skills frm lib, gen agents retrieves relevant events from episodic mem via recency (rule-based) + importance (reasoning-based) and relevance (emb/ dense). DocPrompting uses lib docs, i.e. dense retrieval frm semantic mem
@@ -102,34 +102,30 @@ selective table
 ---
 
 # Other
+
+## Discussion
+- Planning vs. execution: how much should agents plan? "balancing the cost of planning against the utility of the resulting improved plan" (ref [xkcd comic](https://xkcd.com/1445/) of plan A vs plan B vs thinking about choosing plan A or B)
+- Learning vs. acting: how should agents continuously and autonomously learn? (explore-exploit for learning)
+- LLMs vs. code: where should agents rely on each? "CoALA thus suggests that good design uses agent code primarily to implement classic, generic planning algorithms - and relies heavily on the LLM for action proposal and evaluation."
+
+## Introduction
 - Draws parallels with these ideas: _production systems_ and _cognitive architectures_ (finally!)
 	- "Production systems generate a set of outcomes by iteratively applying rules"
 - Fig 1, the different types of LLMs and going up the hierarchy of complexity
     - 1a. Simplest type: LLM as generic input-output fn
     - 1b. LLM as an agent, in a typical RL fashion interacting with the env by producing an action based on observation
     - 1c. Cognitive LM, same setup as 1b but the agent internally has various components like memory, retrieval learning and reasoning (i.e. RAG style)
-- Background: From Strings to Symbolic AGI
-    - "Large production systems connected to external sensors, actuators, and knowledge bases required correspondingly sophisticated control flow."
-    - "AI researchers defined 'cognitive architectures' that mimicked human cognition - explicitly instantiating processes such as perception, memory, planning (Adams et al., 2012) to achieve flexible, rational, real-time behaviors"
-    - Canonical example: Soar (fig 2A). My summary [here](soar.md)
-    - CAs have become less popular in the community due to the limitation to domains that can be prescribed by logical predicates, and require pre-specified rules to function
-    - LLMs appear well-posed to meet these challenges due to its flexibility (can operate over arbitrary text) and reduced user specification requirements (LLMs learn a distribution over productions via pretraining)
-    - Researchers have begun to use LLMs within CAs for their implicit world knowledge and to augment traditional symbolic approaches (see citation)
-    - In this paper, the authors import principles from CA to guide the design of LLM based agents
-- Connections b/w LMs and production systems
-    - section draws analogies between the two. 
-    - Fig 3 shows the evolution of LMs to agents. 3a: basic LLM call. 3b: prompt chaining uses pre defined sequences of LLM calls. 3c: language agents use an interactive feedback loop with env.
-    
-- Discussion
-    - Planning vs. execution: how much should agents plan? "balancing the cost of planning against the utility of the resulting improved plan" (ref [xkcd comic](https://xkcd.com/1445/) of plan A vs plan B vs thinking about choosing plan A or B)
-    - Learning vs. acting: how should agents continuously and autonomously learn? (explore-exploit for learning)
-    - LLMs vs. code: where should agents rely on each? "CoALA thus suggests that good design uses agent code primarily to implement classic, generic planning algorithms - and relies heavily on the LLM for action proposal and evaluation."
+## Background: From Strings to Symbolic AGI
+- "Large production systems connected to external sensors, actuators, and knowledge bases required correspondingly sophisticated control flow."
+- "AI researchers defined 'cognitive architectures' that mimicked human cognition - explicitly instantiating processes such as perception, memory, planning (Adams et al., 2012) to achieve flexible, rational, real-time behaviors"
+- Canonical example: Soar (fig 2A). My summary [here](soar.md)
+- CAs have become less popular in the community due to the limitation to domains that can be prescribed by logical predicates, and require pre-specified rules to function
+- LLMs appear well-posed to meet these challenges due to its flexibility (can operate over arbitrary text) and reduced user specification requirements (LLMs learn a distribution over productions via pretraining)
+- Researchers have begun to use LLMs within CAs for their implicit world knowledge and to augment traditional symbolic approaches (see citation)
+- In this paper, the authors import principles from CA to guide the design of LLM based agents
+## Connections b/w LMs and production systems
+- section draws analogies between the two. 
+- Fig 3 shows the evolution of LMs to agents. 3a: basic LLM call. 3b: prompt chaining uses pre defined sequences of LLM calls. 3c: language agents use an interactive feedback loop with env.
 
----
-
-# Soar overview
-- Decision making: Fig 2B
-	- each decision cycle: their preconditions are checked against the agent's working memory
-	- proposal and evaluation phase: a set of productions is used to generate and rank a candidate set of possible actions (see operators vs rules footnote)
-- Learning
-	- Soar can write new productions into its procedural memory, effectively updating its source code!
+## Soar overview
+- Decision making: Fig 2B. proposal and evaluation phase: a set of productions is used to generate and rank a candidate set of possible actions (see operators vs rules footnote)

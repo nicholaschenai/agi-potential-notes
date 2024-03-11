@@ -66,7 +66,7 @@ The use of operators contrasts with rule-based systems where the processing cycl
 
 In contrast, the knowledge in Soar for each of those functions is represented as independent rules, which ==fire in parallel== when they match the current situation.
 
-## deliberation and meta-reasoning
+## Deliberation and meta-reasoning
 Soar commits to a single approach for both deliberation and meta-reasoning, which differs from architectures that have separate meta-processing modules, such as MIDCA (Cox et al., 2016) and Clarion (Sun, 2016).
 
 ---
@@ -91,6 +91,8 @@ Procedural knowledge / memory
 - initiate retrievals from semantic and episodic memory into working memory
 
 Automatic learning mechanisms are associated with procedural and episodic memories.
+
+Learnt from [chunking](soar#Chunking%20Learning%20New%20Rules) and [RL](soar.md#Reinforcement%20Learning%20Learning%20Control%20Knowledge%20from%20Reward)
 
 ## Deliberate Behavior: Selecting and Applying Operators (Decision cycle)
 ![](assets/Pasted%20image%2020240305200356.png)
@@ -282,23 +284,35 @@ Different look-ahead search methods, such as iterative-deepening approaches to b
 - provides a means to incorporate any and all types of reasoning that are possible in Soar in service of the core aspects of proposing, selecting, and applying operators, so that as described below, there is a portal for incorporating additional knowledge and unconstrained reasoning, including deliberate access to semantic and episodic memories, non-symbolic reasoning, planning, reasoning about others (Laird, 2001), etc.
 
 ## Chunking: Learning New Rules
-During an impasse, when the processing in a substate creates knowledge to resolve the impasse, chunking occurs: the processing in a substate is compiled into rules that create the substate results, eliminating future impasses and substate processing
+When the processing in a substate creates knowledge to resolve the impasse, chunking occurs: the processing in a substate is compiled into rules that create the substate results, eliminating future impasses and substate processing
 
-Thus, chunking is a learning mechanism that converts deliberate, sequential reasoning into parallel rule firings
+Converts deliberate, sequential reasoning into parallel rule firings
 
 - Chunking is automatic and is invoked whenever a result is created in a substate. 
 - when results are created, Soar back-traces through the rule that created them, finding the working memory elements that were tested in its conditions. ( determining which structures in the superstate had to exist for the results of the substate processing to be created. )
 - All of those working memory elements that are part of a superstate are saved to become conditions along with additional tests in the conditions of the associated rules, such as equality and inequality tests of variables used in rule conditions, or comparative tests of numbers, and so on. 
 - Tested working memory elements that were local to the substate lead to further back-tracing, which recurs until all potential conditions are determined. 
 - Once back-tracing is complete, those structures become the conditions of a rule, and the results become the actions. 
-- Independent results in a substate lead to the learning of multiple rules.
 
-approach: explanation-based behavior summarization (EBBS; Assanie, 2022).
+Independent results in a substate lead to the learning of multiple rules.
+
+New approach: explanation-based behavior summarization (EBBS; Assanie, 2022).
 
 Chunking can learn all the types of rules encoded in procedural memory and what it learns is dependent
 only on the knowledge used in the substates to create results. The breadth of that processing means that
-chunking can learn a surprisingly wide variety of types of knowledge. Steier et al., (1987) and Rosenbloom
-et al., (1993) are collections of early examples of the diversity of learning possible with chunking.
+chunking can learn a surprisingly wide variety of types of knowledge. 
+
+
+==One limitation is that chunking requires that substate decisions be deterministic so that they will always==
+==create the same result.== Therefore, chunking is not used when decisions are made using numeric
+preferences. We have plans to modify chunking so that such chunks are added to procedural memory
+when there is sufficient accumulated experience to ensure that they have a high probability of being
+correct.
+
+Our empirical results show that costs of the analyses it performs to create a chunk is minimal and that the performance improvements are much greater than the costs (Assanie, 2022).
+
+### Examples
+Steier et al., (1987) and Rosenbloom et al., (1993) are collections of early examples of the diversity of learning possible with chunking.
 
 - Elaboration: In any impasse, if the processing in the substate creates monotonic entailments of the superstate, Soar learns elaboration rules.
 - Operator Proposal: When there is a state no-change impasse, it is resolved through the creation of acceptable preferences for new operators, which lead to the learning of operator proposal rules.
@@ -307,15 +321,11 @@ et al., (1993) are collections of early examples of the diversity of learning po
 	- When those are numeric preferences, the rules created by chunking will be RL rules that are initialized with whatever evaluation was generated. In the future, those rules can be further tuned by reinforcement learning (Laird et al., 2011).
 - Operator Application: For operator no-change impasses where the substate implements an operator through hierarchical decomposition, interpreting declarative representations from semantic memory, or recalling past examples from episodic memory, chunking learns operator application rules (Laird et al., 2010). For operators used to simulate external behavior, this corresponds to model learning.
 
-==One limitation is that chunking requires that substate decisions be deterministic so that they will always==
-==create the same result.== Therefore, chunking is not used when decisions are made using numeric
-preferences. We have plans to modify chunking so that such chunks are added to procedural memory
-when there is sufficient accumulated experience to ensure that they have a high probability of being
-correct.
-
-A potential concern with chunking is that the costs of the analyses it performs to create a chunk could
-surpass its benefits. Our empirical results show that such overhead is minimal and that the performance
-improvements are much greater than the costs (Assanie, 2022).
+Also Steier et al., (1987):
+- analogy
+- look-ahead search
+- task decomposition
+- planning
 
 ## Reinforcement Learning: Learning Control Knowledge from Reward
 
@@ -408,7 +418,7 @@ provides an agent with the ability to remember the context of past experiences a
 
 retrieval process:
 - Similar to retrievals in semantic memory, and for similar reasons, retrievals from episodic memory are initiated via a cue created in the episodic memory buffer by procedural knowledge. 
-	- Unlike semantic memory, a cue for an episodic retrieval is a partial specification of a complete state, as opposed to a single concept. 
+	- Unlike semantic memory, a cue for an episodic retrieval is a partial specification of a **complete state**, as opposed to a single concept. 
 - Episodic memory is searched, and the best match is retrieved (biased by recency) and recreated in the buffer. 
 - Once a memory is retrieved, memories before or after that episode can also be retrieved, providing the ability to replay an experience as a sequence of retrieved episodes or to move backward through an experience to determine factors that influenced the current situation, including prior operators, but also changes from the dynamics of the environment.
 
