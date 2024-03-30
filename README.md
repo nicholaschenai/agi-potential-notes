@@ -4,10 +4,9 @@ Really quick notes for my own reference so pardon the untidyness. Will occasiona
 Notes focused on papers which in my opinion are delivering interesting algorithmic insights/ advancements towards understanding intelligence.
 
 ---
-# Personal Observations
+# Observations
+see [OBSERVATIONS](OBSERVATIONS.md)
 
-- Decomposing tasks beats end-to-end deep learning
-- Having a memory component separate from the foundation models is important 
 ---
 # Benchmarks
 - [MineDojo](https://minedojo.org/)
@@ -148,11 +147,10 @@ while iteration < max_iterations:
                 - react: this then adjusts the current action n schedule n decomposes it
         - if sum of importance for the latest events exceeds a thr, `run_reflect` (under `reflect.py`)
             - this is impt as raw observations are not as informative; agents need to make inferences over them
-            - What to reflect on? generate focal points via LM on the recent (100) accessed thoughts and events, centered on subjects
+            - What to reflect on? generate focal points via LM on the recent (`scratch.importance_ele_n=100`) accessed thoughts and events, centered on subjects
             - `new_retrieve` based on these focal points (what to reflect on)
-            - from these statements, use LM to generate insights and cite the evidence
+            - from these statements, use LM to generate insights and cite the evidence, linking them to the old statements. Thus reflections follow a tree like structure, leaf nodes are observations and the level of abstraction increases as we go up the tree
             - each of them r stored as thoughts in memory stream with poignancy
-            - Reflections follow a tree like structure, leaf nodes are observations and the level of abstraction increases as we go up the tree
         - Execute: `self.execute(maze, personas, plan)`
 - A lot of environment implementation details which I will revisit later
 - Eval via interview!
