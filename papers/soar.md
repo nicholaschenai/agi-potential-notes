@@ -123,9 +123,9 @@ contains the information that is tested by rules. It includes goals, data retrie
 
 - no predefined structure for the contents of working memory except for the buffers that interface to other modules
 - Thus, there is no predefined structure for goals or even operators. 
-	- one exception: to support the proposal and selection of operators, Soar has a special data structure called a preference. Preferences are created in the actions of rules and added to preference memory. two classes of preferences. 
-		- Acceptable preferences are created by operator proposal rules to indicate an operator is available for selection independent of whether it should be selected. Acceptable preferences are also added to working memory so that the evaluation rules can detect which operators have been proposed. 
-		- Evaluative preferences, of which there are many types, specify information about whether an operator should be selected for the current situation
+- one exception: to support the proposal and selection of operators, Soar has a special data structure called a preference. Preferences are created in the actions of rules and added to preference memory. two classes: 
+	- Acceptable preferences are created by operator proposal rules to indicate an operator is available for selection independent of whether it should be selected. Acceptable preferences are also added to working memory so that the evaluation rules can detect which operators have been proposed. 
+	- Evaluative preferences, of which there are many types, specify information about whether an operator should be selected for the current situation
 
 ### Input Phase
 
@@ -482,19 +482,26 @@ fig 6: The image memory system is still experimental, although variants have bee
 # Other
 
 ### Challenges
-- cognitive architecture design: how to create sufficient structure to support coherent and purposeful behavior, while providing sufficient flexibility so that an agent can adapt (via learning) to the specifics of its tasks and environment. 
+- Cognitive architecture design: how to create sufficient structure to support coherent and purposeful behavior, while providing sufficient flexibility so that an agent can adapt (via learning) to the specifics of its tasks and environment.
+- Assaine 2022 (thesis): traces can be extremely large for even simple tasks (eg 16 pages)
+	- also see thesis for problems with chunking in general
 - Operate autonomously, but within a social community (partial, no). Soar agents are completely autonomous, without direct human control. Any control is indirect through communication channels that feed in as input into working memory such as natural language. Some agents have run uninterrupted for 30 days. In addition, Rosie does exist in a (very limited) social community with its instructor. Other agents have been developed that operate in teams (Tambe, et al. 1995; Jones, et al. 1999). it is not clear whether what is missing is some aspect of architecture as opposed to agent knowledge.
 - Core and commonsense knowledge (no). Although Soar supports the encoding and use of a wide variety of knowledge, we have not pre-encoded large bodies of innate knowledge that are available in every task. Thus, Soar agents have neither core knowledge systems (Kinzler & Spelke, 2007) nor large bodies of commonsense knowledge (Davis & Marcus, 2015). 
 	- It is an open question as to whether this is an issue with missing innate knowledge, or whether it is an architectural issue in that Soar’s procedural and semantic memories are insufficient for representing and accessing these types of knowledge and its learning mechanisms are insufficient for learning them. It is also possible that it is a combination of both.
-- most missing from Soar: ability to “bootstrap” itself up from the architecture and a set of innate knowledge into being a fully capable agent across a breadth of tasks. Our agents do well when restricted to specific well-defined tasks. We have gone beyond that with Rosie, where we achieved success with its task learning capabilities. But without a human to closely guide it, Rosie is unable to get very far on its own, especially in being unable to learn new abstract symbolic concepts on its own, and similarly being unable to independently learn new abstract operators (although the IBMEA project briefly described in the appendix is making progress on this).
+- most missing from Soar: ability to “bootstrap” itself up from the architecture and a set of innate knowledge into being a fully capable agent across a breadth of tasks. Our agents do well when restricted to specific well-defined tasks. 
+	- We have gone beyond that with Rosie, where we achieved success with its task learning capabilities. But without a human to closely guide it, Rosie is unable to get very far on its own, especially in 
+		- being unable to learn new abstract symbolic concepts on its own, and similarly 
+		- being unable to independently learn new abstract operators (although the IBMEA project briefly described in the appendix is making progress on this).
+- from earlier: ==Soar does not have an automatic learning mechanism for semantic memory==
+- from earlier: ==Soar currently has no pre-existing intrinsic reward==
 
 ### Design choices
-- A key hypothesis of Soar is that there are sufficient regularities above the neural level to capture the functionality of the human mind. 
+- Key hypothesis: sufficient regularities above the neural level to capture the functionality of the human mind. 
 - Thus, the majority of knowledge representations in Soar are symbol structures, with architecturally maintained numeric metadata biasing the retrieval and learning of those structures. 
-- There is no commitment to a specific underlying implementation level, such as using simulated neurons
-### episodic mem overhead details
-Soar minimizes the memory overhead of episodic memory by storing only the changes between episodes
-and uses indexing to minimize retrieval costs. 
+- no commitment to a specific underlying implementation level, such as NN
+### Episodic mem overhead details
+- Minimizes memory overhead by storing only the **changes** between episodes 
+- indexing to minimize retrieval costs
 
 However, memory does grow over time, and the cost to retrieve old episodes slowly increases as the number of episodes grows, whereas the time to retrieve recent episodes remains constant. 
 
