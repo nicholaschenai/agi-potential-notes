@@ -7,7 +7,7 @@ created-date: 2024-04-01
 tags:
   - AI
   - decision-procedures
-paper: 
+paper: https://arxiv.org/abs/2310.04406
 code: https://github.com/andyz245/LanguageAgentTreeSearch
 zks-type: lit
 ---
@@ -122,7 +122,7 @@ $$
 
 **Backpropagation**: For each node in the trajectory from root to leaf, backprop the values via eqn above, except they update $N$ first before updating $V$
 
-**Reflection**: when terminated unsuccessfully, prompt with traj and final reward for self-reflection that summarizes the errors in the reasoning or acting process and propose better alternatives. failed trajectories and reflections are stored in memory, to be used in subsequent iterations for additional context to agent and value fn.
+**Reflection**: when terminated unsuccessfully, prompt with traj and final reward for self-reflection that summarizes the errors in the reasoning or acting process and propose better alternatives. failed trajectories and reflections are stored in memory, to be used in subsequent iterations for additional context to agent and value fn. From the code [here](https://github.com/andyz245/LanguageAgentTreeSearch/blob/main/programming/mcts.py#L61), it seems like they accumulate reflections and feedback from the node all the way up to its parent
 
 ![](assets/Pasted%20image%2020240403121705.png)
 

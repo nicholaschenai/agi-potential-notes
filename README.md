@@ -25,6 +25,7 @@ Notes focused on papers which in my opinion are delivering interesting algorithm
 - see LLM planning capability survey  [here](https://arxiv.org/pdf/2402.02716.pdf)
 
 ---
+# Strategies
 
 # Learning
 ## Curriculum Learning
@@ -34,7 +35,7 @@ Biological inspiration (from Minedojo interactivity example): cats learn better 
 - (also curriculum learning) [voyager](papers/voyager.md) uses LM to pick suitable task based on current abilities
 
 ## Of action space
-- [GITM](../../gh-notes/agi-potential/papers/GITM.md) constrained actions via breaking down of task into dependency trees, for each leaf node extract tuples, get the most common actions
+- [GITM](papers/GITM.md) constrained actions via breaking down of task into dependency trees, for each leaf node extract tuples, get the most common actions
 
 # Task Decomposition
 usually beats end-to-end deep learning
@@ -50,6 +51,10 @@ usually beats end-to-end deep learning
 # Reasoning
 - Broad picture concepts eg [step-back-prompting](papers/step-back-prompting.md)
 - Reflection: [gen-agents](papers/gen-agents.md) use LM to choose focal point, retrieve based off it, then LM to draw conclusions on the retrieved, citing evidence
+## Utility planning in reasoning
+i.e. weighing the amount of resources to put into reasoning
+- search based approaches like [LATS](papers/LATS.md), ToT etc allows user to define search depth, exploration
+- Increasing resource upon failure, eg [[LATS]] "first prompting with a CoT-based prompt, then switching to a ReAct-based prompt upon failure. This is closer to how humans might approach this task, by using tools to lookup additional information only when the answer is not already known."
 ## Analogical reasoning
 Drawing analogies (across domains, contexts) to make sense of new situations from past exp (something like transfer learning)
 - via [prompting](papers/llm-analogical.md)
@@ -59,10 +64,15 @@ Drawing analogies (across domains, contexts) to make sense of new situations fro
 - [soar](papers/soar.md) "functions is represented as independent rules, which ==fire in parallel== when they match the current situation"
 
 # Decision procedures
-- LATS: selection (MCTS), expansion(MCTS), evaluation via LM, simulation(MCTS), backprop (MCTS), reflection to store failed traj as context
+- [LATS](papers/LATS.md): selection (MCTS), expansion(MCTS), evaluation via LM, simulation(MCTS), backprop (MCTS), reflection to store failed traj as context
 
 # Data
 Tinystories: quality data is impt
+
+---
+# Challenges for cognitive architecture
+- see [Challenges](papers/soar.md#Challenges)
+- [gen-agents](papers/gen-agents.md): "However, their space of action was limited to manually crafted procedural knowledge, ..."
 
 ---
 # Paper Notes
@@ -72,7 +82,8 @@ Tinystories: quality data is impt
 - [soar](papers/soar.md)
 - [GITM](papers/GITM.md)
 - Generative Agents: Interactive Simulacra of Human Behavior [gen-agents](papers/gen-agents.md)
-- The Rise and Potential of Large Language Model Based Agents: A Survey [[Repo (lit review)](https://github.com/WooooDyy/LLM-Agent-Paper-List)]
+- [LATS](papers/LATS.md)
+
 
 ---
 # [TODO](TODO.md)
