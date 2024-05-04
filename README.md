@@ -29,6 +29,7 @@ Notes focused on papers which in my opinion are delivering interesting algorithm
 
 # Learning
 ## Curriculum Learning
+- Use LM to generate curriculum from internal knowledge and results from agent task attempts eg [voyager](papers/voyager.md)
 
 ## Active learning
 Biological inspiration (from Minedojo interactivity example): cats learn better visual repr when it explores on its own.
@@ -64,15 +65,35 @@ Drawing analogies (across domains, contexts) to make sense of new situations fro
 - [soar](papers/soar.md) "functions is represented as independent rules, which ==fire in parallel== when they match the current situation"
 
 # Decision procedures
-- [LATS](papers/LATS.md): selection (MCTS), expansion(MCTS), evaluation via LM, simulation(MCTS), backprop (MCTS), reflection to store failed traj as context
+- [LATS](papers/LATS.md): selection (MCTS), expansion(MCTS), evaluation via LM, simulation(MCTS), backprop (MCTS), reflection to store failed traj as context. see their comparisons vs other decision procedures like ToT, ReAct, Reflexion
 
 # Data
+for training, retrieval, curriculum
+
 Tinystories: quality data is impt
+- Web search
+- Document DBs (eg Wikidata in [CoK](https://arxiv.org/abs/2305.13269))
+- Knowledge graphs (eg via SPARQL in [CoK](https://arxiv.org/abs/2305.13269))
+- Wiki and API (as in ReAct)
+- Table corpora (eg WikiTables in [CoK](https://arxiv.org/abs/2305.13269))
+- Other data sets (eg ScienceQA in [CoK](https://arxiv.org/abs/2305.13269))
+
+# Retrieval
+## How to rank?
+- Importance score by LLM (eg [gen-agents](papers/gen-agents.md))
+- Recency score (eg [gen-agents](papers/gen-agents.md) and other episodic mem implentations)
+- relevance (eg dense vectors like ebd, sparse vectors like BM25, or hybrid)
+- frequency of access (eg [soar](papers/soar.md))
 
 ---
 # Challenges for cognitive architecture
 - see [Challenges](papers/soar.md#Challenges)
 - [gen-agents](papers/gen-agents.md): "However, their space of action was limited to manually crafted procedural knowledge, ..."
+
+---
+# Concepts
+- [cognitive-architecture-motivation](concepts/cognitive-architecture-motivation.md)
+- 
 
 ---
 # Paper Notes
@@ -83,6 +104,7 @@ Tinystories: quality data is impt
 - [GITM](papers/GITM.md)
 - Generative Agents: Interactive Simulacra of Human Behavior [gen-agents](papers/gen-agents.md)
 - [LATS](papers/LATS.md)
+- [saycan](papers/saycan.md)
 
 
 ---
