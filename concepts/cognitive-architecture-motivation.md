@@ -1,5 +1,5 @@
 # Why cognitive architecture (CA)?
-(i'll use examples from [[soar]] a lot, but in general, other cognitive architectures also seek to replicate variants of the concepts described below)
+(i'll use examples from [soar](../papers/soar.md) a lot, but in general, other cognitive architectures also seek to replicate variants of the concepts described below)
 ## Bio-inspiration
 Why train a large model to learn cognitive processes when we can explicitly implement those that we already understand? Here are some examples of cognitive processes replicated in CAs
 
