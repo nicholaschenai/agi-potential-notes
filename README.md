@@ -38,6 +38,9 @@ Biological inspiration (from Minedojo interactivity example): cats learn better 
 ## Of action space
 - [GITM](papers/GITM.md) constrained actions via breaking down of task into dependency trees, for each leaf node extract tuples, get the most common actions
 
+## Of procedural knowledge
+- [[voyager]] add when task is successful. [oscopilot](papers/oscopilot.md) add when task successful AND critic rates it at least 8/10
+
 # Task Decomposition
 usually beats end-to-end deep learning
 - [GITM](papers/GITM.md): prompt based RAG (from wiki n minedojo recipies) decomposition, recursively till no more prerequisites
@@ -49,6 +52,11 @@ usually beats end-to-end deep learning
 ## Maintaining internal knowledge
 - pure LM based merging of successful sequences eg [GITM](papers/GITM.md)
 
+## Procedural Memory
+### When to learn procedural skills?
+- attempt task with code and store instantly if success [voyager](papers/voyager.md)
+- attempt task with code and store if critic rates success above a threshold [oscopilot](papers/oscopilot.md)
+- write code only when existing tools cannot solve task, as determined by LM [LATM](papers/LATM.md)
 # Reasoning
 - Broad picture concepts eg [step-back-prompting](papers/step-back-prompting.md)
 - Reflection: [gen-agents](papers/gen-agents.md) use LM to choose focal point, retrieve based off it, then LM to draw conclusions on the retrieved, citing evidence
@@ -82,8 +90,9 @@ Tinystories: quality data is impt
 ## How to rank?
 - Importance score by LLM (eg [gen-agents](papers/gen-agents.md))
 - Recency score (eg [gen-agents](papers/gen-agents.md) and other episodic mem implentations)
-- relevance (eg dense vectors like ebd, sparse vectors like BM25, or hybrid)
-- frequency of access (eg [soar](papers/soar.md))
+- Relevance (eg dense vectors like ebd, sparse vectors like BM25, or hybrid)
+- Frequency of access (eg [soar](papers/soar.md))
+- Tiered: cheap methods like BM25 when filtering from bulk documents, then rerank those retrieved w more expensive but better methods like ebd or LM
 
 ---
 # Challenges for cognitive architecture
@@ -105,6 +114,7 @@ Tinystories: quality data is impt
 - Generative Agents: Interactive Simulacra of Human Behavior [gen-agents](papers/gen-agents.md)
 - [LATS](papers/LATS.md)
 - [saycan](papers/saycan.md)
+- [LATM](papers/LATM.md)
 
 
 ---
