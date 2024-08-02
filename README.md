@@ -38,9 +38,6 @@ Biological inspiration (from Minedojo interactivity example): cats learn better 
 ## Of action space
 - [GITM](papers/GITM.md) constrained actions via breaking down of task into dependency trees, for each leaf node extract tuples, get the most common actions
 
-## Of procedural knowledge
-- [[voyager]] add when task is successful. [oscopilot](papers/oscopilot.md) add when task successful AND critic rates it at least 8/10
-
 # Task Decomposition
 usually beats end-to-end deep learning
 - [GITM](papers/GITM.md): prompt based RAG (from wiki n minedojo recipies) decomposition, recursively till no more prerequisites
@@ -53,10 +50,26 @@ usually beats end-to-end deep learning
 - pure LM based merging of successful sequences eg [GITM](papers/GITM.md)
 
 ## Procedural Memory
-### When to learn procedural skills?
-- attempt task with code and store instantly if success [voyager](papers/voyager.md)
-- attempt task with code and store if critic rates success above a threshold [oscopilot](papers/oscopilot.md)
-- write code only when existing tools cannot solve task, as determined by LM [LATM](papers/LATM.md)
+- [procedural-retrieval](strategies/procedural-retrieval.md)
+- [procedural-learning](strategies/procedural-learning.md)
+
+## Data
+for training, retrieval, curriculum
+
+Tinystories: quality data is impt
+- Web search
+- Document DBs (eg Wikidata in [CoK](https://arxiv.org/abs/2305.13269))
+- Knowledge graphs (eg via SPARQL in [CoK](https://arxiv.org/abs/2305.13269))
+- Wiki and API (as in ReAct)
+- Table corpora (eg WikiTables in [CoK](https://arxiv.org/abs/2305.13269))
+- Other data sets (eg ScienceQA in [CoK](https://arxiv.org/abs/2305.13269))
+
+## Retrieval
+- Importance score by LLM (eg [gen-agents](papers/gen-agents.md))
+- Recency score (eg [gen-agents](papers/gen-agents.md) and other episodic mem implentations)
+- Relevance (eg dense vectors like ebd, sparse vectors like BM25, or hybrid)
+- Frequency of access (eg [soar](papers/soar.md))
+- Tiered: cheap methods like BM25 when filtering from bulk documents, then rerank those retrieved w more expensive but better methods like ebd or LM. Eg [TiM](https://arxiv.org/abs/2311.08719)uses locality sensitive hashing as a first pass (sublinear time!) before using vector similarity on its nearest group of neighbors
 # Reasoning
 - Broad picture concepts eg [step-back-prompting](papers/step-back-prompting.md)
 - Reflection: [gen-agents](papers/gen-agents.md) use LM to choose focal point, retrieve based off it, then LM to draw conclusions on the retrieved, citing evidence
@@ -75,24 +88,6 @@ Drawing analogies (across domains, contexts) to make sense of new situations fro
 # Decision procedures
 - [LATS](papers/LATS.md): selection (MCTS), expansion(MCTS), evaluation via LM, simulation(MCTS), backprop (MCTS), reflection to store failed traj as context. see their comparisons vs other decision procedures like ToT, ReAct, Reflexion
 
-# Data
-for training, retrieval, curriculum
-
-Tinystories: quality data is impt
-- Web search
-- Document DBs (eg Wikidata in [CoK](https://arxiv.org/abs/2305.13269))
-- Knowledge graphs (eg via SPARQL in [CoK](https://arxiv.org/abs/2305.13269))
-- Wiki and API (as in ReAct)
-- Table corpora (eg WikiTables in [CoK](https://arxiv.org/abs/2305.13269))
-- Other data sets (eg ScienceQA in [CoK](https://arxiv.org/abs/2305.13269))
-
-# Retrieval
-## How to rank?
-- Importance score by LLM (eg [gen-agents](papers/gen-agents.md))
-- Recency score (eg [gen-agents](papers/gen-agents.md) and other episodic mem implentations)
-- Relevance (eg dense vectors like ebd, sparse vectors like BM25, or hybrid)
-- Frequency of access (eg [soar](papers/soar.md))
-- Tiered: cheap methods like BM25 when filtering from bulk documents, then rerank those retrieved w more expensive but better methods like ebd or LM
 
 ---
 # Challenges for cognitive architecture

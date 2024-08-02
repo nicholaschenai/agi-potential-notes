@@ -11,6 +11,7 @@ Why train a large model to learn cognitive processes when we can explicitly impl
 - procedural memory for skills and procedures
 - declarative memory (semantic, episodic) for facts and knowledge
 - in humans, such knowledge are distinct and have different properties: eg knowing how to ride a bicycle (procedural) is much stickier than recalling what you ate for lunch 4 days ago (episodic) or random trivia (semantic)
+- while CAs do not necessitate the use of explicit memories, many do especially when applying rule-based procedures. Explicit memories have the advantage of explainability (eg seeing the timestamps and tracing when and how the memories and associations are formed), editability
 
 ### Chunking
 - grouping skills as a single unit
