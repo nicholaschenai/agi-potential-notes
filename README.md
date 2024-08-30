@@ -45,13 +45,21 @@ usually beats end-to-end deep learning
 # Planning
 - Reference plan from memory (eg [GITM](papers/GITM.md))
 - LLM based planning for a (sub)goal via sequence of structured actions n args (eg [GITM](papers/GITM.md))
+- LUMOS shows importance of disentangling subgoal planning and action grounding skills during the agent training
 # Memory
 ## Maintaining internal knowledge
 - pure LM based merging of successful sequences eg [GITM](papers/GITM.md)
+- KG based pruning before addition [arigraph](papers/arigraph.md)
 
 ## Procedural Memory
 - [procedural-retrieval](strategies/procedural-retrieval.md)
 - [procedural-learning](strategies/procedural-learning.md)
+
+## Semantic memory
+- subject - rel - object graphs (eg [arigraph](papers/arigraph.md))
+
+## Episodic memory
+- Episodic observation - semantic knowledge "hypergraph" ([arigraph](papers/arigraph.md))
 
 ## Data
 for training, retrieval, curriculum
@@ -64,12 +72,13 @@ Tinystories: quality data is impt
 - Table corpora (eg WikiTables in [CoK](https://arxiv.org/abs/2305.13269))
 - Other data sets (eg ScienceQA in [CoK](https://arxiv.org/abs/2305.13269))
 
-## Retrieval
+# Retrieval
 - Importance score by LLM (eg [gen-agents](papers/gen-agents.md))
 - Recency score (eg [gen-agents](papers/gen-agents.md) and other episodic mem implentations)
 - Relevance (eg dense vectors like ebd, sparse vectors like BM25, or hybrid)
 - Frequency of access (eg [soar](papers/soar.md))
 - Tiered: cheap methods like BM25 when filtering from bulk documents, then rerank those retrieved w more expensive but better methods like ebd or LM. Eg [TiM](https://arxiv.org/abs/2311.08719)uses locality sensitive hashing as a first pass (sublinear time!) before using vector similarity on its nearest group of neighbors
+- Graph based retrieval (eg [arigraph](papers/arigraph.md))
 # Reasoning
 - Broad picture concepts eg [step-back-prompting](papers/step-back-prompting.md)
 - Reflection: [gen-agents](papers/gen-agents.md) use LM to choose focal point, retrieve based off it, then LM to draw conclusions on the retrieved, citing evidence
@@ -110,6 +119,7 @@ Drawing analogies (across domains, contexts) to make sense of new situations fro
 - [LATS](papers/LATS.md)
 - [saycan](papers/saycan.md)
 - [LATM](papers/LATM.md)
+- AriGraph: Learning Knowledge Graph World Models with Episodic Memory for LLM Agents [arigraph](papers/arigraph.md)
 
 
 ---
