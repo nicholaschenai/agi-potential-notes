@@ -28,6 +28,8 @@ Notes focused on papers which in my opinion are delivering interesting algorithm
 # Strategies
 
 # Learning
+## Procedural learning
+- [procedural-learning](strategies/procedural-learning.md)
 ## Curriculum Learning
 - Use LM to generate curriculum from internal knowledge and results from agent task attempts eg [voyager](papers/voyager.md)
 
@@ -52,8 +54,8 @@ usually beats end-to-end deep learning
 - KG based pruning before addition [arigraph](papers/arigraph.md)
 
 ## Procedural Memory
-- [procedural-retrieval](strategies/procedural-retrieval.md)
-- [procedural-learning](strategies/procedural-learning.md)
+- Code as skills (eg [voyager](papers/voyager.md), [oscopilot](papers/oscopilot.md))
+
 
 ## Semantic memory
 - subject - rel - object graphs (eg [arigraph](papers/arigraph.md))
@@ -73,12 +75,22 @@ Tinystories: quality data is impt
 - Other data sets (eg ScienceQA in [CoK](https://arxiv.org/abs/2305.13269))
 
 # Retrieval
+## Generic
 - Importance score by LLM (eg [gen-agents](papers/gen-agents.md))
-- Recency score (eg [gen-agents](papers/gen-agents.md) and other episodic mem implentations)
 - Relevance (eg dense vectors like ebd, sparse vectors like BM25, or hybrid)
 - Frequency of access (eg [soar](papers/soar.md))
 - Tiered: cheap methods like BM25 when filtering from bulk documents, then rerank those retrieved w more expensive but better methods like ebd or LM. Eg [TiM](https://arxiv.org/abs/2311.08719)uses locality sensitive hashing as a first pass (sublinear time!) before using vector similarity on its nearest group of neighbors
+
+## From semantic
 - Graph based retrieval (eg [arigraph](papers/arigraph.md))
+
+## From episodic
+- Recency score (eg [gen-agents](papers/gen-agents.md) and other episodic mem implentations)
+- Graph score (eg [arigraph](papers/arigraph.md))
+
+## From procedural
+- [procedural-retrieval](strategies/procedural-retrieval.md)
+
 # Reasoning
 - Broad picture concepts eg [step-back-prompting](papers/step-back-prompting.md)
 - Reflection: [gen-agents](papers/gen-agents.md) use LM to choose focal point, retrieve based off it, then LM to draw conclusions on the retrieved, citing evidence
