@@ -121,18 +121,23 @@ Drawing analogies (across domains, contexts) to make sense of new situations fro
 - 
 
 ---
-# Paper Notes
+# Selected reading list
 - Cognitive Architectures for Language Agents [coala](papers/coala.md)
+- Building Machines That Learn and Think Like People [building-machines](papers/building-machines.md)
+- Introduction to Soar [soar](papers/soar.md)
+
+---
+# Paper Notes
+## Architectures
 - Voyager: An Open-Ended Embodied Agent with Large Language Models [voyager](papers/voyager.md)
 - [oscopilot](papers/oscopilot.md)
-- [soar](papers/soar.md)
 - [GITM](papers/GITM.md)
 - Generative Agents: Interactive Simulacra of Human Behavior [gen-agents](papers/gen-agents.md)
+- AriGraph: Learning Knowledge Graph World Models with Episodic Memory for LLM Agents [arigraph](papers/arigraph.md)
+## Other components
 - [LATS](papers/LATS.md)
 - [saycan](papers/saycan.md)
 - [LATM](papers/LATM.md)
-- AriGraph: Learning Knowledge Graph World Models with Episodic Memory for LLM Agents [arigraph](papers/arigraph.md)
-
 
 ---
 # [TODO](TODO.md)
