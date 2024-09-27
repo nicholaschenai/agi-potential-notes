@@ -556,6 +556,7 @@ Similar, see heuristic argument section in [cognitive-architecture-motivation](.
 - lang builds on core capabilities for intuitive phys / psych, and rapid learning w compositional, causal models. However, these capacities are in place before children master language, and they provide the building blocks for linguistic meaning and language acquisition. (Carey 2009; Jackendoff 2003; Kemp 2007; O’Donnell 2015; Pinker 2007; Xu & Tenenbaum 2007).
 - What else might we need to add to these core ingredients to get language? see paragraph for list of speculations. Is it some **new version of these things (speculations), or is it just more of the aspects of these capacities that are already present** in infants? 
 - should keep in mind all the ways that acquiring lang extends and enriches the ingredients of cognition in this article (see para for various ways n studies)
+- my thought: can have intelligence without language, eg vid on monkey being able to drive a golf cart and navigate
 
 ### They did not intend for their list to be complete: Future work and opinions
 - some argue language should be included in any list of key ingredients for human intellect eg Mikolov et al. 2016
