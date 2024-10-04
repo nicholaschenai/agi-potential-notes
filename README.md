@@ -39,6 +39,7 @@ Biological inspiration (from Minedojo interactivity example): cats learn better 
 
 ## Of action space
 - [GITM](papers/GITM.md) constrained actions via breaking down of task into dependency trees, for each leaf node extract tuples, get the most common actions
+- [learning-grounded-action](papers/learning-grounded-action.md) Construct task-specific representations (DSL) from LLMs with execution feedback
 
 # Task Decomposition
 usually beats end-to-end deep learning
@@ -48,6 +49,17 @@ usually beats end-to-end deep learning
 - Reference plan from memory (eg [GITM](papers/GITM.md))
 - LLM based planning for a (sub)goal via sequence of structured actions n args (eg [GITM](papers/GITM.md))
 - LUMOS shows importance of disentangling subgoal planning and action grounding skills during the agent training
+
+# Improving Prompts
+- Promptbreeder: 
+	- Improve both task and mutation prompt via genetic algo. 
+	- "compositional task-specific initialization of mutation-prompts, subsequent online mutation of mutation-prompts, uses special mutation operators that take into account the whole population and elite history, and uses diversity-maintenance methods"
+	- early expts: LLMs do not understand fitness values, but other ppr suggests that LLMs do.
+	- diversity by lying to LLM via reversing order fitness, to counter recency bias (!?)
+- APE 
+	- "one generator-prompt to generate prompt candidates, and another mutation-prompt to mutate them"
+	- "generating an initial distribution of prompts using another prompt that infers the problem from a number of input-output examples from the dataset.", stabilizes after 3 iterations
+- TODO: metaprompting by Anthropic
 # Memory
 ## Maintaining internal knowledge
 - pure LM based merging of successful sequences eg [GITM](papers/GITM.md)
@@ -138,6 +150,8 @@ Drawing analogies (across domains, contexts) to make sense of new situations fro
 - [LATS](papers/LATS.md)
 - [saycan](papers/saycan.md)
 - [LATM](papers/LATM.md)
+- LILO: LEARNING INTERPRETABLE LIBRARIES BY COMPRESSING AND DOCUMENTING CODE [LILO](papers/LILO.md)
+- LEARNING GROUNDED ACTION ABSTRACTIONS FROM LANGUAGE [learning-grounded-action](papers/learning-grounded-action.md)
 
 ---
 # [TODO](TODO.md)
