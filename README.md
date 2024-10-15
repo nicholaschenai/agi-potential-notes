@@ -18,7 +18,13 @@ Notes focused on papers which in my opinion are delivering interesting algorithm
 | MuSiQue (Trivedi et al., 2022)  | multihop reasoning                                                                                         |      |
 | StrategyQA (Geva et al., 2021)  | multihop reasoning, open domain                                                                            |      |
 
+### MathQA
 
+  
+| Name                                                   | Year | Description                                                                                      | open SOTA | closed SOTA    |
+| ------------------------------------------------------ | ---- | ------------------------------------------------------------------------------------------------ | --------- | -------------- |
+| [Omni-MATH](https://arxiv.org/abs/2410.07985)          | 2024 | 4428 competition-level problems, 33 sub-domains and span more than 10 distinct difficulty levels |           | 60.54% o1-mini |
+| [MATH](https://huggingface.co/datasets/lighteval/MATH) | 2021 | 5000 train and 5000 test                                                                         |           |                |
 
 ---
 # LLM capabilities and challenges
