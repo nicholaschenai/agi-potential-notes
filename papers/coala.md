@@ -17,7 +17,7 @@ Use the framework to "highlight gaps and propose actionable directions toward mo
 
 ## **Actionable insights**
 - Working memory and reasoning: thinking beyond LLM prompt engineering: "the community should think about a structured working memory and systematic 'reasoning' actions that update working memory variables"
-- Long-term memory: thinking beyond retrieval augmentation: "memory-augmented language agents can both read and write self-generated content autonomously"-- combine existing human knowledge with self-discovered and self maintained exp, knowledge and skills. example: coding agent starts off with human knowledge (semantic), problem solutions and test records (episodic), reflection n summaries on top of these exp (semantic), gradually expanding code lib that sttores useful methods eg Quicksort (procedural). A bit like bootstrapping AlphaGo off existing games then enhancing from self play?
+- Long-term memory: thinking beyond retrieval augmentation: "memory-augmented language agents can both read and write self-generated content autonomously"-- combine existing human knowledge with self-discovered and self maintained exp, knowledge and skills. example: coding agent starts off with human knowledge (semantic), problem solutions and test records (episodic), reflection n summaries on top of these exp (semantic), gradually expanding code lib that stores useful methods eg Quicksort (procedural). A bit like bootstrapping AlphaGo off existing games then enhancing from self play?
 - Learning: thinking beyond in-context learning or finetuning. (read this entire paragraph!)
 	- learning better retrieval procedures could enable agents to better connect memorized information to new scenarios
 	- recent expansion based techniques may be readily applied ('in what situations would this knowledge be useful?', and append the reasoning results to the knowledge to help later connect the knowledge to new situations)
@@ -37,7 +37,7 @@ Use the framework to "highlight gaps and propose actionable directions toward mo
 # How it compares to previous work
 Key contributions over previous CA
 - Inclusion of LLMs leads to the addition of 'reasoning' actions, which can flexibly produce new knowledge and heuristics, replacing handcrafted rules in previous CAs
-- makes text the de factor internal representation
+- makes text the de facto internal representation
 - suggests vision-language models can simplify grounding by translating perceptual data to text
 
 ---
@@ -51,7 +51,7 @@ maintains active and readily available information as symbolic variables for the
 ### episodic memory
 exp from earlier decision cycles, eg training data, history event flows, past game trajectories. Can be retrieved into working memory to support reasoning. can write new exp frm working to episoding memory as a form of learning
 ### semantic memory
-agent's knowledge about the world and itself. (eg initialized from external db, RAG). past expamples tend to employ read-only semantic memory but  lang agents may write new knowledge from LLM reasoning into semantic memory as a form of learning.
+agent's knowledge about the world and itself. (eg initialized from external db, RAG). past examples tend to employ read-only semantic memory but  lang agents may write new knowledge from LLM reasoning into semantic memory as a form of learning.
 ### procedural memory 
 - implicit knowledge in LLM weights, explicit knowledge in agent's code.
 - explicit knowledge
@@ -125,7 +125,10 @@ selective table
 - In this paper, the authors import principles from CA to guide the design of LLM based agents
 ## Connections b/w LMs and production systems
 - section draws analogies between the two. 
-- Fig 3 shows the evolution of LMs to agents. 3a: basic LLM call. 3b: prompt chaining uses pre defined sequences of LLM calls. 3c: language agents use an interactive feedback loop with env.
+- Fig 3 shows the evolution of LMs to agents. 
+	- 3a: basic LLM call. 
+	- 3b: prompt chaining uses pre defined sequences of LLM calls. 
+	- 3c: language agents use an interactive feedback loop with env.
 
 ## Soar overview
 - Decision making: Fig 2B. proposal and evaluation phase: a set of productions is used to generate and rank a candidate set of possible actions (see operators vs rules footnote)
