@@ -122,7 +122,7 @@ Frostbite: one of the "long horizon planning" atari games which the original DQN
 ![](assets/Pasted%20image%2020240626161329.png)
 
 ### Challenge: Can AI adapt to new tasks which humans can do so easily? 
-eg
+- eg
 	- getting a specific score
 	- making the worst moves (side note: applicable in some games which have features to control your opponents eg Emrakul from MTG.)
 	- getting a score that is slightly better than someone while they are playing next to you
@@ -340,7 +340,7 @@ causal models: "represent hypothetical real-world processes that produce the per
 	- serving as a bottom-up proposer to make probabilistic inference (inverting causal model, explain pixels as objects and their interactions, such as the agent stepping on an ice floe to deactivate it) more tractable in a structured generative model
 	- serving as the causal generative model if imbued with the right set of ingredients
 
-### ### Rapid model building ingredient 3: Learning to learn
+### Rapid model building ingredient 3: Learning to learn
 - When humans or machines make
 inferences that go far beyond the data, strong prior knowledge
 (or inductive biases or constraints) must be making up
@@ -348,7 +348,8 @@ the difference (Geman et al. 1992; Griffiths et al. 2010;
 Tenenbaum et al. 2011). learning to learn is one way people acquire such priors
 - NNs: entire field of meta-learning
 - impt for learning-to-learn to occur at multiple levels of the hierarchical generative process, to reuse and combine previously learned primitives and larger generative pieces to define new generative models for new characters (Fig. 5A).
-- Learn **typical levels of variability** within a typical generative model to know how far and in what ways to generalize (recall in few or single shot learning, not enough info to calculate variance). (side note: in the early days of RL before target networks, deep-learning based Q functions can vary their estimates by orders of magnitudes. learning typical levels of variability would have helped)
+- Learn **typical levels of variability** within a typical generative model to know how far and in what ways to generalize (recall in few or single shot learning, not enough info to calculate variance). 
+	- (side note: in the early days of RL before target networks, deep-learning based Q functions can vary their estimates by orders of magnitudes. learning typical levels of variability would have helped)
 - example of learning-to-learn in humans for learning new object models in vision and cognition: novel two-wheeled vehicle in Figure 1B, where learning-to-learn can operate through the transfer of previously learned parts and relations (sub-concepts such as wheels, motors, handle bars, attached, powered by) that reconfigure compositionally to create a model of the new concept. 
 - "If deep neural networks could adopt similarly compositional, hierarchical, and causal representations, we expect they could benefit more from learning to-learn."
 
