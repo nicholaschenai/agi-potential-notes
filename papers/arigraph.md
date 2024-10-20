@@ -32,11 +32,13 @@ foo
 - semantic nodes related by semantic edge of triplets (subj rel obj)
 - episodic nodes are obs, episodic "hyperedges" (see their footnote for caveat) connect all episodic n semantic nodes that occur at the same time
 ### construction
-- construction via LLM extracting entities
+- entities extracted from LLM given obs and plan.
 	- entities are accompanied w importance score but not used
+- relations extracted from LLM given obs and prev triplets
 
 ### maintenance
-- when new triplets introduced, associated triplets retrieved by common entities and then both are sent to LLM to determine of any triplet needs updating
+- when new triplets introduced, entities in them are used to retrieve associated triplets (edges from entities in new triplets)
+- associated triplets and new triplets sent to LLM to determine of any triplet needs replacing
 - outdated semantic rel edges detected by comparing with ablating the semantic edge. after clearing, new nodes are added
 ## Retrieval
 ![](assets/Pasted%20image%2020240830084052.png)
