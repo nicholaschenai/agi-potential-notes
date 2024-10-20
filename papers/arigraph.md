@@ -33,7 +33,7 @@ foo
 - episodic nodes are obs, episodic "hyperedges" (see their footnote for caveat) connect all episodic n semantic nodes that occur at the same time
 ### construction
 - construction via LLM extracting entities
-	- entities are acoompanied w importance score
+	- entities are accompanied w importance score but not used
 
 ### maintenance
 - when new triplets introduced, associated triplets retrieved by common entities and then both are sent to LLM to determine of any triplet needs updating
