@@ -73,7 +73,7 @@ usually beats end-to-end deep learning
 
 ## Procedural Memory
 - Code as skills (eg [voyager](papers/voyager.md), [oscopilot](papers/oscopilot.md))
-
+- Workflows (reusable trajectory templates), e.g. [agent-workflow-memory](papers/agent-workflow-memory.md)
 
 ## Semantic memory
 - subject - rel - object graphs (eg [arigraph](papers/arigraph.md))
@@ -158,6 +158,7 @@ Drawing analogies (across domains, contexts) to make sense of new situations fro
 - [LATM](papers/LATM.md)
 - LILO: LEARNING INTERPRETABLE LIBRARIES BY COMPRESSING AND DOCUMENTING CODE [LILO](papers/LILO.md)
 - LEARNING GROUNDED ACTION ABSTRACTIONS FROM LANGUAGE [learning-grounded-action](papers/learning-grounded-action.md)
+- Agent Workflow Memory [agent-workflow-memory](papers/agent-workflow-memory.md)
 
 ---
 # [TODO](TODO.md)
