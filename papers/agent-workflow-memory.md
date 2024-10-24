@@ -44,7 +44,7 @@ Loop:
 - For each `template_id`, sample `n` samples
 - Entire thing is passed to LLM to create a set of workflows
 
-comment: this means still require templates
+comment: reliant on templates / task attributes for proper data balance
 ### Online scenario
 - start from default memory
 - given `t`-th test instruction
