@@ -10,28 +10,83 @@ code:
 ---
 [[Repo (lit review)](https://github.com/ysymyth/awesome-language-agents)]
 # Description of result
-Concept paper which proposes "Cognitive Architectures for Language Agents (CoALA), a conceptual framework to systematize diverse methods for LLM-based reasoning, grounding, learning, and decision making as instantiations of language agents in the framework"
+Concept paper which proposes Cognitive Architectures for Language Agents (CoALA), a conceptual framework to "systematize diverse methods for LLM-based reasoning, grounding, learning, and decision making as instantiations of language agents in the framework"
+- Use it to retrospectively organize and understand existing architectures and works
+- Also to highlight gaps and propose actionable directions
 
-Use the framework to "highlight gaps and propose actionable directions toward more capable language agents in the future."
+## Key arguments
+- Agents used to require handcrafted rules or RL, making generalization to new envs challenging
+- LLMs have decent priors from pretraining and are extremely flexible, operating over arbitrary text. This complements agents of the past and reduces requirements for human annotations or trial and error learning
+## Actionable insights
+### Require Modular Agents
+Standardizing code and terminology
+- allow for conceptual comparisons across works and to think about useful abstractions (eg memory, action and agent classes)
+- standardize experience instead of interacting with a mix of agents developed by individual teams
+- Suggestion: use code sparingly to implement generic algos that complement LLM limitations (eg tree search to mitigate myopic autoregressive generation)
 
+### Agent design: Beyond simple reasoning
+- can use framework as a guide to think about implementations of components. take a personalized retail assistant for example: external actions would be dialogue or returning search results to user
+- Determine memory modules: retail assistant example
+	- semantic: items for sale
+	- episodic: customer's purchase and interaction history
+	- procedural: functions to interact with datastores
+	- working: tracking dialogue state
+- Define action space: retail assistant example
+	- read and write to episodic to store and retrieve new interactions
+	- read-only for semantic and procedural
+- Define decision procedure
+	- tradeoff b/w performance and generalization (eg more complex procedure are better suited for specific problems like Voyager in Minecraft while simpler ones are more domain agnostic n generalizeable like ReAct)
+	- Retail assistant example: retrieve user interactions from episodic for priors of their search intent, reasoning about whether the search results will satisfy intent. Defer learning to end of interaction, summarize episode prior to storing in episodic mem
+### Structured reasoning beyond prompt engineering
+- Use prompting frameworks to define higher level reasoning  steps and prompt crafting efforts
+	- Use structured output solutions to update working mem variables
+	- Define, build good working mem modules esp when needed to integrate with large-scale code infra
+- Reasoning usecases can inform and reshape LLM training
+	- LLMs are trained n optimized for NLP tasks by default, but agent applications require new modes of reasoning (eg self-evaluation)
+	- LLMs trained or finetuned towards LLM reasoning will more likely be the backbone of future agents
+		- comment: as of writing (Oct 2024), o1 has spurred an interest in the reasoning end of training LLMs
+- (from v1) systematic 'reasoning' actions that update working memory variables"
 
-## **Actionable insights**
-- Working memory and reasoning: thinking beyond LLM prompt engineering: "the community should think about a structured working memory and systematic 'reasoning' actions that update working memory variables"
-- Long-term memory: thinking beyond retrieval augmentation: "memory-augmented language agents can both read and write self-generated content autonomously"-- combine existing human knowledge with self-discovered and self maintained exp, knowledge and skills. example: coding agent starts off with human knowledge (semantic), problem solutions and test records (episodic), reflection n summaries on top of these exp (semantic), gradually expanding code lib that stores useful methods eg Quicksort (procedural). A bit like bootstrapping AlphaGo off existing games then enhancing from self play?
-- Learning: thinking beyond in-context learning or finetuning. (read this entire paragraph!)
-	- learning better retrieval procedures could enable agents to better connect memorized information to new scenarios
-	- recent expansion based techniques may be readily applied ('in what situations would this knowledge be useful?', and append the reasoning results to the knowledge to help later connect the knowledge to new situations)
-	- Learning new learning and decision procedures may be necessary to empower agents to go beyond the limitations of human-provided code
-	- explore smaller models for specific reasoning needs
+### Long-term memory: thinking beyond retrieval augmentation: 
+agents can read n write self-generated content: new possibilities for efficient lifelong learning
+
+- combine existing human knowledge with self-discovered (and potentially self maintained) exp, knowledge and skills. 
+	- example: coding agent starts off with human knowledge (semantic), problem solutions and test records (episodic), reflection n summaries on top of these exp (semantic), gradually expanding code lib that stores useful methods eg Quicksort (procedural). A bit like bootstrapping AlphaGo off existing games then enhancing from self play?
+		- see USACO-bench which aims to facilitate this
+- integrate retrieval and reasoning to ground planning: recent works suggest adaptive mechanisms of interleaving mem search and forward simulation
+
+### Learning: thinking beyond in-context learning or finetuning
+(read this entire paragraph!)
+- meta-learning by modifying agent code for more efficient learning
+	- learning better retrieval procedures could enable agents to make better use of experience, esp when connecting to new scenarios
+	- recent expansion based techniques can allow agents to reason 'in what situations would this knowledge be useful?', and append the reasoning results to the knowledge to help later connect the knowledge to new situations / facilitate recall
+	- can help go beyond human-written code but understudied due to difficulty and risk
+	- (v1 phrasing) Learning new learning and decision procedures may be necessary to empower agents to go beyond the limitations of human-provided code
+- new forms of (un)learning
+	- explore smaller models for specific reasoning subtasks
 	- unlearning!
 	- combine multiple forms of learning
-- Action space: thinking beyond external tools or actions.
-	- impt to balance tradeoff for size of action space: larger means more expressivity/ capability, but harder decision making
-	- Safety! currently limited to task-specific heuristics, but as agents are increasingly integrated into systems, "it will be necessary to clearly specify and ablate the agent's action space for worst-case scenario prediction and prevention"
-- Decision making: thinking beyond action generation.
-	- most works are still confined to proposing (or directly generating) a single action. It would be powerful to extend deliberate propose-evaluate-select schemes to "more complicated tasks with grounding and LT memory; enable learning of decision making procedures; and reduce the cost of extensive reasoning to facilitate more deliberate planning (potentially via smaller task-specific models for proposal or evaluation)"
-	- "increased usage of reasoning toward complex decision making"
-	- "solving known issues such as over-confidence and miscalibration, misalignment with human values or bias, hallucinations in self-evaluation, and lack of human-in-the-loop mechanisms in face of uncertainties"
+
+### Action space: thinking beyond external tools or actions.
+- impt to balance tradeoff for size of action space: larger means more expressivity/ capability, but harder decision making
+- Safety! 
+	- some actions are inherently riskier 
+		- eg learning actions that modify internal memories
+		- grounding actions like shell commands that deal with filesystem
+	- safety measures currently limited to task-specific heuristics 
+	- as agents are increasingly integrated into systems, "it will be necessary to clearly specify and ablate the agent's action space for worst-case scenario prediction and prevention"
+
+### Decision making: thinking beyond action generation
+most works are still confined to proposing (or directly generating) a single action. "Present agents have just scratched the surface of more deliberate, propose-evaluate-select decision-making procedures" (v1: combine with grounding and LT memory)
+- mixing language based reasoning and code-based planning
+	- existing works either plan in NL or translate from NL to structured world models
+	- future works could integrate these, just like how Soar has a physics simulator. agents might write code to simulate consequences of their plans
+- extend deliberative reasoning to real-world settings (current works eval on simple tasks)
+- metareasoning to improve efficiency
+	- how to balance usage of LLM (due to high computation) and utility of improved plan? current works specify a search depth or budget
+	- humans adaptively allocate computation, and future would could estimate utility of planning, modifying decision procedure accordingly (eg finetuning, routing to sub procedures like how ReAct routes to ToT) or direct decision procedure update
+	- v1: potentially via smaller task-specific models for proposal or evaluation
+- calibration and alignment: solving over-confidence and miscalibration, misalignment with human values or bias, hallucinations in self-evaluation, and lack of human-in-the-loop mechanisms in face of uncertainties"
 
 ---
 # How it compares to previous work
@@ -42,6 +97,7 @@ Key contributions over previous CA
 
 ---
 # Main strategies used to obtain results
+![](assets/Pasted%20image%2020241024131921.png)
 
 ## Memory
 ### Working memory
@@ -104,10 +160,19 @@ selective table
 # Other
 
 ## Discussion
+- LLMs vs VLMs: integrated repr or vision model for text, then full text reasoning?
+	- integrated approach allows for more human-like behaviors eg seeing a webpage as it is vs LLMs requiring HTML
+	- however coupling perception and reasoning makes agents more domain specific and difficult to update
+- Why treat physical vs digital envs differently?
+	- Digital envs can allow for sequential (eg via resets) and parallel trials, making exploration more scalable, so the decision procedures could be different from cognitive inspired ones
 - Planning vs. execution: how much should agents plan? "balancing the cost of planning against the utility of the resulting improved plan" (ref [xkcd comic](https://xkcd.com/1445/) of plan A vs plan B vs thinking about choosing plan A or B)
 - Learning vs. acting: how should agents continuously and autonomously learn? (explore-exploit for learning)
 - LLMs vs. code: where should agents rely on each? "CoALA thus suggests that good design uses agent code primarily to implement classic, generic planning algorithms - and relies heavily on the LLM for action proposal and evaluation."
-
+- How would agent design change with more powerful LLMs?
+	- hard to predict
+	- CoALA, cognitive science could still help organize tasks where current agents succeed or fail, and highlight areas where code-based procedures could complement the LLM for the task
+	- Even if future LLMs implicitly perform all functions / components in CoALA, the conceptual framework can be a guide to discover and interpret these implicit circuits
+	- LM and agent design could co-evolve (one shapes the other)
 ## Introduction
 - Draws parallels with these ideas: _production systems_ and _cognitive architectures_ (finally!)
 	- "Production systems generate a set of outcomes by iteratively applying rules"
@@ -115,6 +180,7 @@ selective table
     - 1a. Simplest type: LLM as generic input-output fn
     - 1b. LLM as an agent, in a typical RL fashion interacting with the env by producing an action based on observation
     - 1c. Cognitive LM, same setup as 1b but the agent internally has various components like memory, retrieval learning and reasoning (i.e. RAG style)
+![](assets/Pasted%20image%2020241024131605.png)
 ## Background: From Strings to Symbolic AGI
 - "Large production systems connected to external sensors, actuators, and knowledge bases required correspondingly sophisticated control flow."
 - "AI researchers defined 'cognitive architectures' that mimicked human cognition - explicitly instantiating processes such as perception, memory, planning (Adams et al., 2012) to achieve flexible, rational, real-time behaviors"
