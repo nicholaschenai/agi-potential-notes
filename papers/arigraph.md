@@ -30,22 +30,35 @@ foo
 ## KG
 ### definitions
 - semantic nodes related by semantic edge of triplets (subj rel obj)
-- episodic nodes are obs, episodic "hyperedges" (see their footnote for caveat) connect all episodic n semantic nodes that occur at the same time
+- episodic nodes are obs, episodic "hyperedges" (see their footnote for caveat) connect all episodic n semantic nodes that occur at the same time (basically all the triplets at that snapshot in time)
 ### construction
-- entities extracted from LLM given obs and plan.
-	- entities are accompanied w importance score but not used
+- entities extracted from LLM given obs and plan, each assigned an importance score.
 - relations extracted from LLM given obs and prev triplets
 
 ### maintenance
-- when new triplets introduced, entities in them are used to retrieve associated triplets (edges from entities in new triplets)
+- when new triplets introduced, entities in them form a set which edges are retrieved (associated triplets), and neighbors appended to that set. Repeat for `steps=1` (BFS of depth 1)
 - associated triplets and new triplets sent to LLM to determine of any triplet needs replacing
+	- duplicate existing triplet removal by prompting LM to replace both of them
 - outdated semantic rel edges detected by comparing with ablating the semantic edge. after clearing, new nodes are added
 ## Retrieval
 ![](assets/Pasted%20image%2020240830084052.png)
 
+### Semantic search
+semantic search for triplets via Contriever model. impt as nodes may be similar (eg 'grill' and 'grilling') but are not captured by rigid (eg keyword) search
+
+depth determined by importance score
+
 ![](assets/Pasted%20image%2020240830085648.png)
-- semantic search for triplets via Contriever model. impt as nodes may be similar (eg 'grill' and 'grilling') but are not captured by rigid (eg keyword) search
-- episodic search: given triplets, return most relevant episodic vertices
+
+
+### episodic search
+
+![](assets/Pasted%20image%2020241020142827.png)
+
+simplified: given previous subgraph (result of semantic search in prev round), current episodic (observation, triplets at that point in time, obs ebd) and plan, each observation is given a score via
+1) First get vec similarity of that observation with the plan (normalized)
+2) Then for that observation, with its set of triplets, calculate the overlaping number of triplets with prev subgraph (normalized by num triplets in the episode containing the obs) but adjusted with eqn (1)
+3) sum these 2 scores, return the top k episodic that isnt in the `n_prev` observations (because last `n_prev` obs is directly shown in prompts)
 
 ## Decision making
 via ReAct

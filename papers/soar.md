@@ -266,10 +266,14 @@ Figure 3 shows a three-level hierarchy of operators (but not substates) where th
 ![](assets/Pasted%20image%2020240306182040.png)
 
 Soar’s approach to hierarchical decomposition has similarities to those used in Hierarchical Task
-Networks, Hierarchical Goal Networks, or options in RL. A few distinguishing characteristics of Soar’s
-approach are that the hierarchical decomposition is determined by the knowledge available at run time.
-There is no fixed declarative structure that specifies the decomposition, nor are there fixed sequences of
-sub-operators that are applied. Within a substate, all of Soar’s processing is available, which includes
+Networks, Hierarchical Goal Networks, or options in RL. 
+
+Distinguishing characteristics of Soar’s approach:
+ - **hierarchical decomposition is determined by the knowledge available at run time**.
+ - no fixed declarative structure that specifies the decomposition, 
+ - nor are there fixed sequences of sub-operators that are applied. 
+ 
+ Within a substate, all of Soar’s processing is available, which includes
 planning, retrievals from semantic and episodic memory, and interaction with the external environment.
 
 ### Deliberate Operator Selection (resolving operator conflicts/ties)
@@ -331,7 +335,7 @@ Also Steier et al., (1987):
 
 Possible to use RL to tune the selection of operators if the agent receives feedback (reward) from its actions
 
-- create operator evaluation rules that create numeric preferences, aptly called RL rules (Nason & Laird, 2005). 
+- create operator evaluation rules that create numeric preferences (RL rules) (Nason & Laird, 2005). 
 - The conditions of an RL rule determine which states and proposed operators the rule applies to, and the numeric value of the preference encodes the expected reward (Q value) for those states and operators. 
 - After an operator applies, all RL rules that created numeric preferences for it are updated based on the reward associated with the state and the expected future reward. 
 - The expected future reward is the sum of the numeric preferences for the next selected operator.
@@ -374,6 +378,7 @@ Semantic and episodic memories differ from procedural memory in
 - and how they are learned
 
 Q: Why the information in semantic memory cannot be maintained in working memory?
+
 A: cost of matching procedural knowledge against working memory increases significantly with working memory size, making it necessary to store long-term knowledge separately
 
 Concepts in semantic memory are encoded in the same symbolic graph structures as used in working
