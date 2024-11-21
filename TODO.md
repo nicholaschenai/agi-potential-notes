@@ -8,7 +8,3 @@
     - Call APIs, evaluate whether the result decreases perplexity of the rest of the solution
     - Fine tune model on cases where it does
 
-### CODE4STRUCT: Code Generation for Few-Shot Structured Prediction from Natural Language
-[[Code](https://github.com/xingyaoww/code4struct)]
-- Event Argument Extraction (NLP task) via generating code
-- has some of the neuro symbolic stuff i wanna do

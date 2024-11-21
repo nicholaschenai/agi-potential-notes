@@ -22,6 +22,10 @@ Why train a large model to learn cognitive processes when we can explicitly impl
 ### Attention mechanisms
 - CAs usually have explicit mechanisms to focus on specific info in working memory (usually influenced by current goals), reflective of human's attention mechanisms
 
+### Other
+- Could nature's solution, from years of evolution, be a good starting point in the extremely large search space of intelligence?
+- Could bio-inspiration help us find energy-efficient architectures compared to the energy-hungry deep learning systems?
+
 ## Heuristic argument
 In complex systems, emergent behaviors can arise and these can often be described by macroscopic variables that do not require low-level microscopic details (eg statistical mechanics, renormalization group theory, systems biology, network science). Might this also extend to AI, where it might not be necessary to simulate neurons at the fundamental level, as we can model the resultant phenomena?
 
@@ -30,6 +34,7 @@ In complex systems, emergent behaviors can arise and these can often be describe
 - Similar to [Compound AI systems](https://bair.berkeley.edu/blog/2024/02/18/compound-ai-systems/) view by BAIR
 	- beyond parametric updates (deep learning: knowledge is static after training)
 	- better control with systems
+- Are there even more useful ideas that were figured out way back in the past? (so we can avoid rediscovering their successes / failures?)
 
 ## CA + LLMs: Complementing each other
 see last 2 slides in "[Improving Knowledge Extraction from LLMs for Task Learning through Agent Analysis](https://raw.githubusercontent.com/SoarGroup/website-downloads/main/workshops/44/talk.15.pptx)" at the 44th Soar Workshop 
