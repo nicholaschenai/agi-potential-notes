@@ -463,6 +463,7 @@ AlphaGo effectively learns from 100 million or more games altogether (D. Silver,
 	- value fns in AlphaGo unlikely to generalize as flexibly as humans, might require significant retraining directed by humans rather than the system itself -- it doesnt really 'understand' the game the same way humans do
 	- humans can adapt quickly because they explicitly represent Go as a game, with a goal to beat an adversary who is playing to achieve the same goal he or she is, governed by rules about how stones can be placed on a board and how board positions are scored.
 	- Humans represent their strategies as a response to these constraints, such that if the game changes, they can begin to adjust their strategies accordingly
+	- some signs in the LLM era: [neurally guided + planning search](https://deepmind.google/research/publications/139455/)
 
 ### Go as an AI challenge
 - in attempting the challenges above, humans are learning-to learn with compositional knowledge, using their core intuitive psychology and aspects of their intuitive physics (spatial and object representations), and integrating model-free pattern recognition with model-based search.
