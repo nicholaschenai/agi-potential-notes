@@ -159,6 +159,7 @@ Drawing analogies (across domains, contexts) to make sense of new situations fro
 - LILO: LEARNING INTERPRETABLE LIBRARIES BY COMPRESSING AND DOCUMENTING CODE [LILO](papers/LILO.md)
 - LEARNING GROUNDED ACTION ABSTRACTIONS FROM LANGUAGE [learning-grounded-action](papers/learning-grounded-action.md)
 - Agent Workflow Memory [agent-workflow-memory](papers/agent-workflow-memory.md)
+- Enhancing intelligent agents with episodic memory [enhancing-agents-episodic](papers/enhancing-agents-episodic.md)
 
 ---
 # [TODO](TODO.md)
