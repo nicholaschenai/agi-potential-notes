@@ -67,9 +67,7 @@ usually beats end-to-end deep learning
 	- "generating an initial distribution of prompts using another prompt that infers the problem from a number of input-output examples from the dataset.", stabilizes after 3 iterations
 - TODO: metaprompting by Anthropic
 # Memory
-## Maintaining internal knowledge
-- pure LM based merging of successful sequences eg [GITM](papers/GITM.md)
-- KG based pruning before addition [arigraph](papers/arigraph.md)
+- [memory-maintenance](strategies/memory-maintenance.md)
 
 ## Procedural Memory
 - Code as skills (eg [voyager](papers/voyager.md), [oscopilot](papers/oscopilot.md))
@@ -93,6 +91,9 @@ Tinystories: quality data is impt
 - Other data sets (eg ScienceQA in [CoK](https://arxiv.org/abs/2305.13269))
 
 # Retrieval
+- [procedural-retrieval](strategies/procedural-retrieval.md)
+- [episodic-retrieval](strategies/episodic-retrieval.md)
+
 ## Generic
 - Importance score by LLM (eg [gen-agents](papers/gen-agents.md))
 - Relevance (eg dense vectors like ebd, sparse vectors like BM25, or hybrid)
@@ -102,12 +103,6 @@ Tinystories: quality data is impt
 ## From semantic
 - Graph based retrieval (eg [arigraph](papers/arigraph.md))
 
-## From episodic
-- Recency score (eg [gen-agents](papers/gen-agents.md) and other episodic mem implentations)
-- Graph score (eg [arigraph](papers/arigraph.md))
-
-## From procedural
-- [procedural-retrieval](strategies/procedural-retrieval.md)
 
 # Reasoning
 - Broad picture concepts eg [step-back-prompting](papers/step-back-prompting.md)
@@ -160,6 +155,7 @@ Drawing analogies (across domains, contexts) to make sense of new situations fro
 - LEARNING GROUNDED ACTION ABSTRACTIONS FROM LANGUAGE [learning-grounded-action](papers/learning-grounded-action.md)
 - Agent Workflow Memory [agent-workflow-memory](papers/agent-workflow-memory.md)
 - Enhancing intelligent agents with episodic memory [enhancing-agents-episodic](papers/enhancing-agents-episodic.md)
+- Reflexion: Language Agents with Verbal Reinforcement Learning [reflexion](papers/reflexion.md)
 
 ---
 # [TODO](TODO.md)

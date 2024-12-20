@@ -35,6 +35,7 @@ zks-type: lit
 	- explore bounds of arch commitments/integration
 	- solve interesting probs
 ## Memory research
+based off "Effective and efficient forgetting of learned knowledge in Soar’s working and procedural memories" ?
 - clue: "Rational analysis of mem" (Anderson et al. 2004): 
 	- Frequency + recency of use (base level activation)
 		- log decay since time of last use $ln(\sum_{j=1}^{n}t_j^{-d})$
@@ -43,7 +44,7 @@ zks-type: lit
 				- only need relative ranking: re-compute on update of mem
 - works well in word sense disambiguation (AAAI 2011)
 - efficiency: new algos to scale (ICCM 2010)
-- empirical: approach yielded beneficial behavior across architectural mechanisms n tasks (ACS 2012, CSR 2013)
+- empirical: approach yielded beneficial behavior across architectural mechanisms n tasks (ACS 2012, CSR 2013 [forgetting-soar-working-procedural-mem](forgetting-soar-working-procedural-mem.md))
 	- Semantic LTM retrieval: word sense disambiguation
 	- working mem decay: robot navication
 	- procedural decay: RL value fn repr in dice game

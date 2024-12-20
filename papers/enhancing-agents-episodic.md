@@ -59,7 +59,7 @@ Pac-man like env. node: agent current position, with features about shape n colo
 recall outcomes of past to predict outcomes of action in present by recalling similar situations
 
 Eaters env:
-- state: current sensing and score, elements related by gent's reasoning
+- state: current sensing and score, elements related by agent's reasoning
 - deciding direction to move
 	- cue: current state + action to be evaluated
 	- retrieve best match state and immediate next state, get difference of scores
@@ -163,7 +163,7 @@ Episodic mem learn frm success n failures Similar to case based reasoning
 		- alternative implementations (e.g. recording every processing cycle) had little impact on performance other than changing total number of ep
 	- what are contents of episode?
 		- agent's state which includes input (sensing), internal data structures and output (actions in world)
-		- but currently excludes episodi mem cues and retrievals (since this nested structure could make individual episodes quite large)
+		- but currently excludes episodic mem cues and retrievals (since this nested structure could make individual episodes quite large)
 		- exclude those with activation below thr to eliminate irrelevant ones
 #### storage
 - data structure: conceptually a sequence of individual episodes but implementation only stores CHANGES between episodes for efficiency (cos few items change from episode to episode)
