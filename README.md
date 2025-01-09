@@ -131,7 +131,7 @@ Drawing analogies (across domains, contexts) to make sense of new situations fro
 ---
 # Concepts
 - [cognitive-architecture-motivation](concepts/cognitive-architecture-motivation.md)
-- 
+- [agent-safety](concepts/agent-safety.md)
 
 ---
 # Selected reading list
