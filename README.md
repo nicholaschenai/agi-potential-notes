@@ -47,6 +47,9 @@ Biological inspiration (from Minedojo interactivity example): cats learn better 
 - [GITM](papers/GITM.md) constrained actions via breaking down of task into dependency trees, for each leaf node extract tuples, get the most common actions
 - [learning-grounded-action](papers/learning-grounded-action.md) Construct task-specific representations (DSL) from LLMs with execution feedback
 
+## Rewards functions
+- [eureka](papers/eureka.md) uses LLM to design reward functions, execute in RL envs and reflect to iteratively improve
+
 # Task Decomposition
 usually beats end-to-end deep learning
 - [GITM](papers/GITM.md): prompt based RAG (from wiki n minedojo recipies) decomposition, recursively till no more prerequisites
