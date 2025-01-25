@@ -551,7 +551,7 @@ Note the distinction of neuroscience (studying at the level of neuronal models) 
 - In the long run, we are optimistic that neuroscience will eventually place more constraints on theories of intelligence. 
 
 ### My take
-Similar, see heuristic argument section in [cognitive-architecture-motivation](../concepts/cognitive-architecture-motivation.md). In various physical systems, understanding the 'effective theory' may be more useful than going down to the more microscopic details.
+Similar, see heuristic argument section in [cognitive-architectures](../concepts/cognitive-architectures.md). In various physical systems, understanding the 'effective theory' may be more useful than going down to the more microscopic details.
 
 ## Why isnt language more prominent here?
 ### Ingredients here are confirmed and necessary for language

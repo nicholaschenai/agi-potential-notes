@@ -22,3 +22,9 @@ Some thoughts on agent safety
 18. Extensions to Voyager (Wang et. al. 2023): Can we get agents to learn explicit representations of more complex things like decision procedures and amount of compute / reasoning steps allocated?
 19. Assuming we have an agent with (at least partially) a way to have explicit memories, can we use human-curated curriculums to train an agent to perform tasks and monitor the construction of explicit skills, so that there is a level of oversight? (In contrast to web-scale data which can be noisy or incorrect)
 20. Monkey brains rewire after they learn to use a tool (e.g. robotic arm). What can mech interp tell us about the models that are tuned for tool use (which is highly adopted in agents), and is this change better or worse for safety?
+
+
+---
+
+## Papers
+- [SELP](../papers/SELP.md)
