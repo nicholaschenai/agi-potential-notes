@@ -129,7 +129,7 @@ Frostbite: one of the "long horizon planning" atari games which the original DQN
 	- discovering easter eggs
 	- optimizing for side quests (eg getting as many fishes)
 	- additional constraints eg touch each ice floe only once
-	- team someone to play as efficiently as possible
+	- teach someone to play as efficiently as possible
 - this challenge highlights an essential component of intelligence: humans learn models which enable them to adapt to new task and goals much faster than current AI
 #### Wait
 its not fair that NNs start from scratch but humans dont (eg biological priors, evolution)? but that is **exactly** the point the authors want to make. what is this prior knowledge in humans which enable them to learn and adapt quickly, and how can we get AI to learn the same ingredients? Addressed in section 5.1
@@ -296,7 +296,7 @@ another example: handwritten characters as compositions of pen strokes and relat
 ![](assets/Pasted%20image%2020240630164717.png)
 
 #### back to frostbite
-- can be composed as objects (birds, fish, ice floes etc), more economical and better for generalzation, as noted in previous work on object-oriented reinforcement learning (Diuk et al. 2008).
+- can be composed as objects (birds, fish, ice floes etc), more economical and better for generalization, as noted in previous work on object-oriented reinforcement learning (Diuk et al. 2008).
 - efficiency more apparent as level progresses where numbers and combinations of objects increase
 
 #### deep learning and compositionality

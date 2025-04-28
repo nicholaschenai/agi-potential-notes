@@ -38,7 +38,7 @@ Not included in this work:
 - riming
 - generalization across episodes or specific models of time
 
-
+---
 ## Description of result
 capabilities which episodic mem can provide
 - action modeling
@@ -137,7 +137,7 @@ result: num moves better than random and decreases over time (notice log scale!)
 
 
 ---
-# How it compares to previous work
+## How it compares to previous work
 Episodic mem learn frm success n failures Similar to case based reasoning
 ![](assets/Pasted%20image%2020241219142023.png)
 
