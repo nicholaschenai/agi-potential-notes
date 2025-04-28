@@ -27,4 +27,4 @@ Some thoughts on agent safety
 ---
 
 ## Papers
-- [SELP](../papers/SELP.md)
+- [SELP](../../agent-security-notes/papers/SELP.md)
