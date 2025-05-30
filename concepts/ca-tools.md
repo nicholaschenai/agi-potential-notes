@@ -17,13 +17,16 @@
 - https://github.com/Center-for-Integrated-Cognition/STARS
 - https://github.com/bluechill/Soar-SC starcraft
 
+---
 ## CLARION
 - https://github.com/cmekik/pyClarion
 
+---
 ## Sigma
 - https://github.com/TownesZhou/PySigma
 - https://bitbucket.org/sigma-development/sigma-release/src/master/
 
+---
 ## ACT-R
 - https://act-r.psy.cmu.edu/software/ (official)
 
@@ -35,6 +38,7 @@
 - https://github.com/SiyuWu528/llm-actr/tree/main
 - https://github.com/SiyuWu528/cognitive-llm
 
+---
 ## LIDA
 - https://github.com/CognitiveComputingResearchGroup/lida-framework (Java, last updated 2016)
 - https://github.com/CognitiveComputingResearchGroup/lidapy (active)

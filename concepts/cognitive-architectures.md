@@ -1,5 +1,13 @@
 # Why cognitive architecture (CA)?
-(i'll use examples from [soar](../papers/soar.md) a lot, but in general, other cognitive architectures also seek to replicate variants of the concepts described below)
+(i'll use examples from [Soar](../papers/soar.md) a lot, but in general, other cognitive architectures also seek to replicate variants of the concepts described below)
+
+## What are cognitive architectures?
+both 
+- a theory about the structure of the human mind 
+	- what components and interactions produce intelligence?
+	- fundamental assumption/principle: intelligence **emerges** from the interaction of multiple specialized components, each with well-defined functions and clear interfaces
+- computational instantiation of such theories
+- examples: [Soar](../papers/soar.md), ACT-R (Adaptive Control of Thought – Rational), and CLARION
 ## Bio-inspiration
 Why train a large model to learn cognitive processes when we can explicitly implement those that we already understand? Here are some examples of cognitive processes replicated in CAs
 
@@ -39,15 +47,16 @@ In complex systems, emergent behaviors can arise and these can often be describe
 	- better control with systems
 - Are there even more useful ideas that were figured out way back in the past? (so we can avoid rediscovering their successes / failures?)
 
+## Cognitive Architectures for Safe AI Development
+- [Cognitive Architectures for Safe AI Development](ca-safety.md)
 
 ## CA + LLMs: Complementing each other
 see last 2 slides in "[Improving Knowledge Extraction from LLMs for Task Learning through Agent Analysis](https://raw.githubusercontent.com/SoarGroup/website-downloads/main/workshops/44/talk.15.pptx)" at the 44th Soar Workshop 
 - CAs: expensive to acquire new task knowledge (need to run many processes within the CA per task), LLMs have task knowledge from pretraining
 - LLMs: hallucination, memorized reasoning and planning, lack grounding or environment context. CAs: techniques for grounding, verification, multistep reasoning, planning, and coordinating multiple knowledge sources
 
-
 ## Limitations, challenges and caveats of cognitive architecture and biological inspiration
 - [ca-limitations](ca-limitations.md)
 
 ## Frameworks and tools
-[ca-tools](ca-tools.md)
+- [ca-tools](ca-tools.md)
