@@ -24,8 +24,11 @@ usually beats end-to-end deep learning
 - LLM based planning for a (sub)goal via sequence of structured actions n args (eg [GITM](papers/GITM.md))
 - LUMOS shows importance of disentangling subgoal planning and action grounding skills during the agent training
 
+---
 # Memory
 - [memory-maintenance](strategies/memory-maintenance.md)
+
+## Working Memory
 
 ## Procedural Memory
 - Code as skills (eg [voyager](papers/voyager.md), [oscopilot](papers/oscopilot.md))
@@ -37,7 +40,7 @@ usually beats end-to-end deep learning
 ## Episodic memory
 - Episodic observation - semantic knowledge "hypergraph" ([arigraph](papers/arigraph.md))
 
-
+---
 # Retrieval
 - [procedural-retrieval](strategies/procedural-retrieval.md)
 - [episodic-retrieval](strategies/episodic-retrieval.md)
@@ -50,7 +53,7 @@ usually beats end-to-end deep learning
 
 ## From semantic
 - Graph based retrieval (eg [arigraph](papers/arigraph.md))
-
+---
 
 # Reasoning
 - Broad picture concepts eg [step-back-prompting](papers/step-back-prompting.md)
