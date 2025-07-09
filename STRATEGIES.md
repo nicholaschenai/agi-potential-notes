@@ -15,7 +15,10 @@ Biological inspiration (from Minedojo interactivity example): cats learn better 
 ## Reward functions
 - [eureka](papers/eureka.md) uses LLM to design reward functions, execute in RL envs and reflect to iteratively improve
 
-# Task Decomposition
+## Task Decomposition
+
+^c7f968
+
 usually beats end-to-end deep learning
 - [GITM](papers/GITM.md): prompt based RAG (from wiki n minedojo recipies) decomposition, recursively till no more prerequisites
 
@@ -28,17 +31,21 @@ usually beats end-to-end deep learning
 # Memory
 - [memory-maintenance](strategies/memory-maintenance.md)
 
-## Working Memory
+## Working Memory (Short term)
 
+## Long term memory (Generic)
+- [Evaluation of](concepts/lt-mem-eval.md)
 ## Procedural Memory
 - Code as skills (eg [voyager](papers/voyager.md), [oscopilot](papers/oscopilot.md))
 - Workflows (reusable trajectory templates), e.g. [agent-workflow-memory](papers/agent-workflow-memory.md)
 
 ## Semantic memory
 - subject - rel - object graphs (eg [arigraph](papers/arigraph.md))
+- [zep](papers/zep.md) declarative mem KG
 
 ## Episodic memory
 - Episodic observation - semantic knowledge "hypergraph" ([arigraph](papers/arigraph.md))
+- [zep](papers/zep.md) declarative mem KG
 
 ---
 # Retrieval
@@ -47,9 +54,15 @@ usually beats end-to-end deep learning
 
 ## Generic
 - Importance score by LLM (eg [gen-agents](papers/gen-agents.md))
-- Relevance (eg dense vectors like ebd, sparse vectors like BM25, or hybrid)
+- Dense embeddings: Vector similarity
+- Lexical (keyword) search
+- Sparse vectors like BM25
 - Frequency of access (eg [soar](papers/soar.md))
-- Tiered: cheap methods like BM25 when filtering from bulk documents, then rerank those retrieved w more expensive but better methods like ebd or LM. Eg [TiM](https://arxiv.org/abs/2311.08719)uses locality sensitive hashing as a first pass (sublinear time!) before using vector similarity on its nearest group of neighbors
+- Tiered: 
+	- cheap methods like BM25 when filtering from bulk documents, 
+	- then rerank those retrieved w more expensive but better methods like ebd or LM. 
+	- Eg [TiM](https://arxiv.org/abs/2311.08719)uses locality sensitive hashing as a first pass (sublinear time!) before using vector similarity on its nearest group of neighbors
+- Combination of the above
 
 ## From semantic
 - Graph based retrieval (eg [arigraph](papers/arigraph.md))
@@ -70,6 +83,7 @@ Drawing analogies (across domains, contexts) to make sense of new situations fro
 ## Operator based
 - [soar](papers/soar.md) "functions is represented as independent rules, which ==fire in parallel== when they match the current situation"
 
+---
 # Decision procedures
 - [LATS](papers/LATS.md): selection (MCTS), expansion(MCTS), evaluation via LM, simulation(MCTS), backprop (MCTS), reflection to store failed traj as context. see their comparisons vs other decision procedures like ToT, ReAct, Reflexion
 

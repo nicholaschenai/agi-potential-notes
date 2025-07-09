@@ -9,6 +9,7 @@ So we have learning to learn, learning to retrieve, learning to .. etc
 
 ## Learning grounding actions: When and how to learn procedural skills?
 - attempt task with code and store if task success [voyager](papers/voyager.md)
+	- personal observation: unrestricted learning causes memory bloat which can displace other useful memories, and can result in uninformative memories
 - attempt task with code and store if task success and critic rates it at least 8/10 [oscopilot](papers/oscopilot.md)
 - write code only when LM determines that existing tools cannot solve task [LATM](papers/LATM.md)
 - synthesis and compression of code [LILO](../papers/LILO.md)
@@ -23,6 +24,7 @@ So we have learning to learn, learning to retrieve, learning to .. etc
 
 ## Learning to retrieve
 - [Auxiliary Cross Attention Network](https://www.frontiersin.org/journals/psychology/articles/10.3389/fpsyg.2025.1591618/full) train network to calculate attention between agent state and memory chunks
+- [Self-RAG](https://arxiv.org/abs/2310.11511)
 
 ### Trend: Test-time learning to memorize (and retrieve)
 Main reason: Pairwise attention in transformers is $N^2$, need more efficient solutions for long context

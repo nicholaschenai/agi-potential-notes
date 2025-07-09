@@ -42,3 +42,8 @@
 ## LIDA
 - https://github.com/CognitiveComputingResearchGroup/lida-framework (Java, last updated 2016)
 - https://github.com/CognitiveComputingResearchGroup/lidapy (active)
+
+---
+
+## Other
+- https://github.com/langchain-ai/langmem Langmem implements variants of procedural, semantic, episodic mem
