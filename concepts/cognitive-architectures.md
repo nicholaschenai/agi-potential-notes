@@ -59,4 +59,4 @@ see last 2 slides in "[Improving Knowledge Extraction from LLMs for Task Learnin
 - [ca-limitations](ca-limitations.md)
 
 ## Frameworks and tools
-- [ca-tools](ca-tools.md)
+- [ca-tools](../tools/ca-tools.md)

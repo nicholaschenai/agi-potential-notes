@@ -46,4 +46,4 @@
 ---
 
 ## Other
-- https://github.com/langchain-ai/langmem Langmem implements variants of procedural, semantic, episodic mem
+- [Langmem](langmem.md) implements variants of procedural, semantic, episodic mem
