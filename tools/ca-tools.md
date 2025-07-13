@@ -47,3 +47,4 @@
 
 ## Other
 - [Langmem](langmem.md) implements variants of procedural, semantic, episodic mem
+- [Memoripy](memoripy.md) partially bio-inspired
