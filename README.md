@@ -43,7 +43,9 @@ Tinystories: quality data is impt
 - [GITM](papers/GITM.md)
 - Generative Agents: Interactive Simulacra of Human Behavior [gen-agents](papers/gen-agents.md)
 - AriGraph: Learning Knowledge Graph World Models with Episodic Memory for LLM Agents [arigraph](papers/arigraph.md)
+- Cradle: Empowering Foundation Agents Towards General Computer Control [Cradle](papers/Cradle.md)
 ### Other components
+- Memento: Fine-tuning LLM Agents without Fine-tuning LLMs [memento](papers/memento.md) (learning to retrieve)
 - [LATS](papers/LATS.md)
 - [saycan](papers/saycan.md)
 - [LATM](papers/LATM.md)

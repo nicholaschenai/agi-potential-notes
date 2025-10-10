@@ -1,6 +1,7 @@
 # Learning
 ## Procedural learning
-- [procedural-learning](strategies/procedural-learning.md)
+[procedural-learning](strategies/procedural-learning.md)
+
 ## Curriculum Learning
 - Use LM to generate curriculum from internal knowledge and results from agent task attempts eg [voyager](papers/voyager.md)
 
@@ -14,18 +15,16 @@ Biological inspiration (from Minedojo interactivity example): cats learn better 
 
 ## Reward functions
 - [eureka](papers/eureka.md) uses LLM to design reward functions, execute in RL envs and reflect to iteratively improve
-
+---
+# Planning
+- Reference plan from memory (eg [GITM](papers/GITM.md), [memento](papers/memento.md))
+- LLM based planning for a (sub)goal via sequence of structured actions n args (eg [GITM](papers/GITM.md))
+- LUMOS shows importance of disentangling subgoal planning and action grounding skills during the agent training
+- [memento](papers/memento.md) showed that slow think (reasoning) models are less suitable for this
 ## Task Decomposition
-
-^c7f968
 
 usually beats end-to-end deep learning
 - [GITM](papers/GITM.md): prompt based RAG (from wiki n minedojo recipies) decomposition, recursively till no more prerequisites
-
-# Planning
-- Reference plan from memory (eg [GITM](papers/GITM.md))
-- LLM based planning for a (sub)goal via sequence of structured actions n args (eg [GITM](papers/GITM.md))
-- LUMOS shows importance of disentangling subgoal planning and action grounding skills during the agent training
 
 ---
 # Memory
@@ -44,14 +43,16 @@ usually beats end-to-end deep learning
 - [zep](papers/zep.md) declarative mem KG
 
 ## Episodic memory
+Property: distilled into abstract rules during sleep-dependent consolidation
 - Episodic observation - semantic knowledge "hypergraph" ([arigraph](papers/arigraph.md))
 - [zep](papers/zep.md) declarative mem KG
+- Store `(state, action, reward)` / `(state, case, Q-value)` tuple [memento](papers/memento.md)
 
 ---
 # Retrieval
 - [procedural-retrieval](strategies/procedural-retrieval.md)
 - [episodic-retrieval](strategies/episodic-retrieval.md)
-
+- also see [learning-to-retrieve](strategies/learning-to-retrieve.md)
 ## Generic
 - Importance score by LLM (eg [gen-agents](papers/gen-agents.md))
 - Dense embeddings: Vector similarity

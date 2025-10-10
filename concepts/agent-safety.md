@@ -4,7 +4,9 @@ Some thoughts on agent safety
 
 1. Is it possible to guarantee AI safety by placing bounds / safeguards on the tools / skills rather than the model? (so the model can be malicious but its action space is constrained)
 2. Can we abstract popular agent use cases (e.g. software engineering, web tasks) into a PDDL so that planning can be interpretable / verifiable?
-3. Can the techniques behind structured output (e.g. ensuring JSON output) be used to constrain model outputs for tools to be within 'acceptable values' (e.g. when an agent is searching through a filesystem, it is prevented from outputting the .env secrets file as a parameter for whichever tool use)
+3. Can the techniques behind structured output (e.g. ensuring JSON output) be used to constrain model outputs for tools to be within 'acceptable values' 
+	- (e.g. when an agent is searching through a filesystem, it is prevented from outputting the .env secrets file as a parameter for whichever tool use)
+	- simple example in [SELP](../../agent-security-notes/papers/SELP.md) where constrained decoding enforces generated plans confirm to LTL
 4. Can existing graph analysis tools be repurposed to be an early warning indicator (e.g. check for agent's impact to the environment given its action, and see if its a few steps away from doing something catastrophic)
 5. If we only allow a 'normal' (relative to the task) amount of thinking / action steps to an agent on a per-task basis, is that enough to prevent hidden schemes (since the agent has to somehow come up with a method to accomplish the task in less that the normal allotted steps and then scheme within the remaining steps)
 6. If we find any circuit that is replaceable by code, can we distil that into code instead and require the agent to use that code so it is more transparent?

@@ -9,6 +9,7 @@ paper: "Zep: A Temporal Knowledge Graph Architecture for Agent Memory"
 code: https://github.com/getzep/graphiti
 zks-type: lit
 ---
+- Experiment code: https://github.com/getzep/zep-papers/tree/main/kg_architecture_agent_memory
 - Zep: memory layer service for AI agents
 	- Solution for LT mem, ctx mgmt and retrieval
 - Graphiti: Underlying engine of Zep 

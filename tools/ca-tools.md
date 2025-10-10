@@ -6,7 +6,7 @@
 - https://github.com/SoarGroup/Soar (Official)
 
 #### In Python
-- https://github.com/Center-for-Integrated-Cognition/pysoarlib
+- https://github.com/Center-for-Integrated-Cognition/pysoarlib Python wrapper
 - https://github.com/KRaizer/Soar-Python-Minimum-Working-Example
 
 ### Integrations

@@ -9,7 +9,12 @@
 
 | Benchmark                                          | Year | Desc                                                                                                                                             | SOTA |
 | -------------------------------------------------- | ---- | ------------------------------------------------------------------------------------------------------------------------------------------------ | ---- |
+| [longmemeval](benchmarks/longmemeval.md)           |      |                                                                                                                                                  |      |
+| Humanity's Last Exam                               |      |                                                                                                                                                  |      |
+| Deepresearcher                                     |      | see curated version in [memento](papers/memento.md)                                                                                              |      |
+| [SimpleQA](https://arxiv.org/abs/2411.04368)       | 2024 |                                                                                                                                                  |      |
 | [MoreHopQA](https://github.com/Alab-NII/morehopqa) | 2024 | Multihop that requires both factual extraction and additional reasoning on top of facts. Built on top of HotpotQA, 2Wiki-MultihopQA, and MuSiQue |      |
+| [GAIA](benchmarks/GAIA.md)                         | 2023 |                                                                                                                                                  |      |
 | [GPQA](https://github.com/idavidrein/gpqa/)        | 2023 | Grad level, 448 multiple-choice questions in biology, physics, and chemistry                                                                     |      |
 | MMLU (Hendrycks et al., 2020)                      |      | diverse QA, including STEM                                                                                                                       |      |
 | TimeQA (Chen et al., 2021)                         |      | SituatedQAtime sensitive knowledge                                                                                                               |      |

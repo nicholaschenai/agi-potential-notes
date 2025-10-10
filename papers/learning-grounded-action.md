@@ -6,11 +6,12 @@ title: "LEARNING GROUNDED ACTION ABSTRACTIONS FROM\r LANGUAGE"
 created-date: 2024-02-18
 tags: 
 paper: https://openreview.net/pdf?id=qJ0Cfj4Ex9
-code:
+code: https://github.com/lio-wong/llm-operators
 ---
 # Intro
 
-older paper [LEARNING ADAPTIVE PLANNING REPRESENTATIONS WITH NATURAL LANGUAGE GUIDANCE](https://arxiv.org/abs/2312.08566)
+- older paper [LEARNING ADAPTIVE PLANNING REPRESENTATIONS WITH NATURAL LANGUAGE GUIDANCE](https://arxiv.org/abs/2312.08566)
+	- https://github.com/lio-wong/llm_operators_datasets
 
 Framework for automatically constructing task-specific planning representations (DSL) using task-general background knowledge from language models (LMs). 
 

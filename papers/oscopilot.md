@@ -10,9 +10,10 @@ tags:
 paper: https://arxiv.org/abs/2402.07456
 code: https://github.com/OS-Copilot/FRIDAY
 ---
-# Description of result
+## Description of result
 Learning here refers to self-learning (curriculum)
-## Benchmark: GAIA (Mialon et al., 2023b), a general AI assistants benchmark. 
+### GAIA 
+[GAIA](../benchmarks/GAIA.md) (Mialon et al., 2023b), a general AI assistants benchmark. 
 Recall definition of levels:
 - Level 1 questions generally require no tools, or at most one tool but no more than 5 steps.
 - Level 2 question generally involve more steps, roughly between 5 and 10 and combining different tools is needed.
@@ -24,12 +25,13 @@ Recall definition of levels:
 ### FRIDAY vs others on GAIA, facet by domain
 ![](assets/Pasted%20image%2020240218132415.png)
 
-## Benchmark: SheetCopilot-20 (Li et al., 2023)
+### SheetCopilot-20 
+(Li et al., 2023)
 Shows how self-learning (curriculum) boosts scores from zero to SOTA
 
 ![](assets/Pasted%20image%2020240218132211.png)
 
-## Other
+### Other
 - Demos of Powerpoint and ReactJS skills
 - OS-Copilot framework to build your own agent
 

@@ -2,6 +2,7 @@
 - Graph score (eg [arigraph](papers/arigraph.md))
 - cardinality of match (num elements that cue and mem have in common, [arigraph](papers/arigraph.md), [enhancing-agents-episodic](papers/enhancing-agents-episodic.md))
 - activation level of working mem elements in the cue that match the mem ([enhancing-agents-episodic](papers/enhancing-agents-episodic.md), Nuxoll & Laird 2004)
+- Learned function ([memento](../papers/memento.md))
 
 ## Activation-Based Selection
 The use of activation levels, similar to those in human memory, can determine the salience of working memory elements. Items with higher activation levels, indicating greater relevance or recency, are more likely to be retrieved from episodic memory (Laird, 2008, Nuxoll & Laird 2007). Can also apply to learning

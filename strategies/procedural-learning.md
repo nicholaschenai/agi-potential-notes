@@ -23,18 +23,4 @@ So we have learning to learn, learning to retrieve, learning to .. etc
 - Wave of learning to CoT works (e.g. openAI o1, deepseek R1)
 
 ## Learning to retrieve
-- [Auxiliary Cross Attention Network](https://www.frontiersin.org/journals/psychology/articles/10.3389/fpsyg.2025.1591618/full) train network to calculate attention between agent state and memory chunks
-- [Self-RAG](https://arxiv.org/abs/2310.11511)
-
-### Trend: Test-time learning to memorize (and retrieve)
-Main reason: Pairwise attention in transformers is $N^2$, need more efficient solutions for long context
-- [Titans: Learning to Memorize at Test Time](https://arxiv.org/abs/2501.00663) 
-	- 3 components
-		- persistent memory (fixed at test time)
-		- contextual memory (updates during test time)
-		- core memory (in-context learning)
-	- effectively scales to 2m context
-	- surprise-based encoding to update contextual (long-term) memory
-	- adaptive forgetting mechanism
-- [ATLAS: Learning to Optimally Memorize the Context at Test Time](https://arxiv.org/abs/2505.23735)
-	- "Typically, no persistent learning or skill acquisition carries over to new, independent global context once the memory is cleared"
+[learning-to-retrieve](learning-to-retrieve.md)
