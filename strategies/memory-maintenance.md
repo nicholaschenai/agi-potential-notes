@@ -5,6 +5,7 @@
 ### Relevance-Based Pruning
 Information that is no longer relevant or has not been accessed for an extended period can be pruned from episodic memory. This strategy is akin to the forgetting process in human memory and helps maintain a manageable memory size
 - [gen-agents](../../../gh-notes/agi-potential-notes/papers/gen-agents.md) memory can decay and expire
+- [memorybank](../papers/memorybank.md) uses exponential decay in style of [ebbinghaus-forgetting-curve](../concepts/ebbinghaus-forgetting-curve.md) to forget memory chunks
 ### Procedural
 - LM prompt based merging of successful sequences eg [GITM](papers/GITM.md)
 - remove those that are learned, can be reconstructed (eg appears in other types of memories) and below activation thr [forgetting-soar-working-procedural-mem](../papers/forgetting-soar-working-procedural-mem.md)

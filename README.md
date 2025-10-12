@@ -27,7 +27,8 @@ Tinystories: quality data is impt
 ## Concepts
 - [Cognitive Architectures](concepts/cognitive-architectures.md)
 - [Agent Safety](concepts/agent-safety.md)
-- see LLM planning capability survey  [here](https://arxiv.org/pdf/2402.02716.pdf)
+- LLM planning capability survey  [here](https://arxiv.org/pdf/2402.02716.pdf)
+- [Ebbinghaus Forgetting Curve](concepts/ebbinghaus-forgetting-curve.md)
 
 ---
 ## Selected reading list
