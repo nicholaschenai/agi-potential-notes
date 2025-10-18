@@ -50,7 +50,7 @@ Memento provides a **scalable and efficient pathway** for developing generalist 
 
 ---
 ## Main strategies used to obtain results
-NOTE: they define case bank as `(state, action, reward)` and episodic memory as `(state, case, Q-value)` (while i usually refer to the former as episodic memory). State is the task, action is the **PLAN**
+NOTE: they define case as `(state, action, reward)` and episodic memory as `(state, case, Q-value)` (while i usually refer to the former as episodic memory). State is the task, action is the **PLAN**
 
 ![](assets/Pasted%20image%2020251003212132.png)
 
@@ -73,18 +73,42 @@ The system alternates between **Case-Based Planning** (retrieving cases from mem
 	- reads pending subtasks from subtask memory, 
 	- accesses relevant history from tool memory (logs of tool interactions for each subtask)
 	- determines whether to tool call or return result
-
+- Planner and executor have their own threads per task, but within it contains a shared message history of (see `_add_to_history` usage in `client/parametric_memory_cbr.py`)
+	- query
+	- retrieved cases
+	- plans for current query (including revisions)
+	- final response from executor per subtask
 ### Case Memory Mechanisms
 **TLDR; Learn to retrieve**
 ![](assets/Pasted%20image%2020251010172739.png)
 
 - **WARNING** section 3 formalizes the setting, only to reduce it to training via binary cross entropy in section 4.2. For the practical minded-reader, ignore section 3
-- The `Write` operation concurrently updates a Q-function (2 layer MLP) online to learn the retrieval distribution. 
-	- code in https://github.com/Agent-on-the-Fly/Memento/blob/main/memory/train_memory_retriever.py
-	- Since the reward signal in deep research tasks is binary (${0, 1}$), the training objective is formulated as a binary classification loss (Cross-Entropy loss) to avoid the vanishing gradient problem associated with Mean Squared Error (MSE) near the boundaries. 
-	- only the state, action, and reward from the final step of each trajectory are written to memory
-- The `Read` operation uses the learned Q-function to select the Top-K cases with the highest Q-values as planning references. 
 
+#### Writing to memory
+- CLAIM: The `Write` operation concurrently updates a Q-function (2 layer MLP) online to learn the retrieval distribution.
+	- however in the code `client/parametric_memory_cbr.py`, there doesnt seem to be any online updating of Q-function; it just collects the data while the training occurs in a separate script `memory/train_memory_retriever.py`
+- only the `(state, action, and reward)` from the final step of each trajectory are written to memory
+- The case memory `(query, plan, success)` for each task is accumulated and carried over to other tasks, as seen from  `client/parametric_memory_cbr.py`'s `save_memory_entry` and `client._load_memory()` at the end of each task
+	- **WARNING**: In the code, they use the dict key `case` to save and load the *query* (can be confusing as in the paper, the case is the `(query, plan, success)`)
+##### Saving training data
+The data for training the Q function is saved via `save_training_data` at the end of each task.
+
+It takes in `(query, retrieved_cases, is_correct)`,  and loops over retrieved_cases: each retrieved case forms 1 data point, so if retrieval k=4, we have 4 data points
+
+when expanded we have `(query, (case_query, plan, case_success), is_correct)`, where to clarify:
+- `(case_query, plan, case_success)` is the memory, i.e. at some point in the past, the agent was tasked with `case_query`, performed `plan`, and resulted in `case_success`
+- `query` is the current task the agent is solving, which triggered the retrieval of the memory `(case_query, plan, case_success)`
+- `is_correct` is the correctness of the agent when answering `query` GIVEN that it retrieved the case memory
+
+#### Training Q
+- code in memory/train_memory_retriever.py
+- from above description of save training data, we use the `query` and a formatted version of `case_query` + `plan` (henceforth called `icl_text`) as inputs to the Q network, and train it to output `is_correct` (see `PairJsonlDataset`)
+- Since the reward signal in deep research tasks is binary (${0, 1}$), the training objective is formulated as a binary classification loss (Cross-Entropy loss) to avoid the vanishing gradient problem associated with Mean Squared Error (MSE) near the boundaries. 
+
+#### retrieval
+- (initialization) The case bank is loaded via `load_pool`, which formats the `case_query` + `plan` into a single text per case
+- during a `query`, the Q-function computes the score by input of `query` and the above, done for all cases
+- The `Read` operation uses the learned Q-function to select the Top-K cases with the highest Q-values as planning references.
 ### Tool-Enabled Execution
 
 The executor leverages a comprehensive suite of tools accessed via the Model Context Protocol (MCP), enabling dynamic reasoning and compositional tool use across multiple domains:
