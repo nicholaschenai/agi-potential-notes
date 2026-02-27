@@ -24,7 +24,7 @@ is_public: true
 
 ![](assets/Pasted%20image%2020251009135216.png)
 ![](assets/Pasted%20image%2020251003215024.png)
-
+![](assets/Pasted%20image%2020251126030950.png)
 - DeepResearcher dataset (7 QA datasets compiled from DeepResearcher): **66.6% F1 and 80.4% PM**.
 	- OOD QA: Case-based memory provided significant gains on out-of-distribution (OOD) tasks, adding 4.7% to 9.6% absolute points across Musique, Bamboogle, and PopQA.
 
@@ -153,6 +153,7 @@ DeepResearcher: identified data contamination (Shumailov et al., 2024), evidence
 - training converges quickly, without performance drops
 - "With only about 3k training data, the Case Bank saturates quickly. Each additional iteration, therefore, contains progressively fewer previously unseen (and thus potentially failing) cases."
 - Opportunity: Train on other envs, test on current envs for larger case bank and show generalization
+- Note: w/o CBR performance improves with iter! I interpret it as 'due to accumulated history of attempts *within* the task'
 
 ![](assets/Pasted%20image%2020251010153059.png)
 ## Discussion & Analysis

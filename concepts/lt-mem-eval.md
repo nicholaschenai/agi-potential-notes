@@ -1,3 +1,33 @@
 # Long term memory evaluation
-- [longmemeval](../benchmarks/longmemeval.md)
-- [LoCoMo](https://arxiv.org/abs/2402.17753)
+- [longmemeval](../benchmarks/longmemeval.md) 
+	- 1.5m avg context length, 
+	- tests various areas like
+		- Info extraction
+		- Multi session reasoning
+		- Knowledge update
+		- Temporal reasoning
+		- Abstaining on unanswerable qns
+	- needle-in-a-haystack-like construction consisting of mixing various chat sessions together 
+		- (might not follow similar distribution to actual human)
+- [locomo](../benchmarks/locomo.md)
+	- 10 conversations, ~5882 conversational turns, averaging 9k tokens per conversation (this is for original dataset of 50 conversations)
+	- tests these categories
+		- Category 1 (Multi-Hop)
+		- Category 2 (Single-Hop)
+		- Category 3 (Temporal)
+		- Category 4 (Open-Domain)
+		- Category 5 (Adversarial)
+	- created by having generative agents talking to each other, with human editing for temporal coherence
+- PerLTQA: 
+	- GPT3.5 generated, specifically modeling personalities and life events
+	- data creation is centered around events
+	- tests mem classification (semantic or episodic), retrieval and synthesis
+	- estimated 13k tokens per character, with 30 characters
+- Episodic memory benchmark
+	- EPISODIC MEMORIES GENERATION AND EVALUATION BENCHMARK FOR LARGE LANGUAGE MODELS
+	- construction
+		- book with chapters. 
+		- each chapter is generated independently
+		- each event is sampled iid
+		- as such might not be temporally coherent
+	- ~500 tokens per chapter

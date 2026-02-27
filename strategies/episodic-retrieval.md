@@ -3,7 +3,8 @@
 - cardinality of match (num elements that cue and mem have in common, [arigraph](papers/arigraph.md), [enhancing-agents-episodic](papers/enhancing-agents-episodic.md))
 - activation level of working mem elements in the cue that match the mem ([enhancing-agents-episodic](papers/enhancing-agents-episodic.md), Nuxoll & Laird 2004)
 - Learned function ([memento](../papers/memento.md))
-
+- [zep](../papers/zep.md)
+- mem0
 ## Activation-Based Selection
 The use of activation levels, similar to those in human memory, can determine the salience of working memory elements. Items with higher activation levels, indicating greater relevance or recency, are more likely to be retrieved from episodic memory (Laird, 2008, Nuxoll & Laird 2007). Can also apply to learning
 - activation Increase when production rules fire due to that WME, or agent attempts to add existing WME [enhancing-agents-episodic](../../../gh-notes/agi-potential-notes/papers/enhancing-agents-episodic.md)
@@ -15,3 +16,8 @@ The use of activation levels, similar to those in human memory, can determine th
 Storing memories with contextual tags can facilitate quicker retrieval by allowing the system to filter memories based on the current context or task requirements. 
 - [gen-agents](../../../gh-notes/agi-potential-notes/papers/gen-agents.md) has keyword filter to retrieve related events n thoughts
 
+---
+
+Also see
+- [episodic-learning](episodic-learning.md)
+- [lt-mem-eval](../concepts/lt-mem-eval.md)

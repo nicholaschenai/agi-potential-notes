@@ -33,3 +33,8 @@
 | [MATH](https://huggingface.co/datasets/lighteval/MATH) | 2021 | 5000 train and 5000 test                                                                                 |           |                |
 | [GSM8K](https://github.com/openai/grade-school-math)   | 2021 | Grade school math 7.5k train 1k test                                                                     |           |                |
 |                                                        |      |                                                                                                          |           |                |
+
+### Web
+| Name                            | Year | Description | open SOTA | closed SOTA |
+| ------------------------------- | ---- | ----------- | --------- | ----------- |
+| [WebShop](./benchmarks/webshop) | 2022 |             |           |             |

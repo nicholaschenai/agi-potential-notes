@@ -1,6 +1,7 @@
 # Learning
-## Procedural learning
-[procedural-learning](strategies/procedural-learning.md)
+## Learning for the 3 memory types
+- [procedural-learning](strategies/procedural-learning.md)
+- [episodic-learning](strategies/episodic-learning.md)
 
 ## Curriculum Learning
 - Use LM to generate curriculum from internal knowledge and results from agent task attempts eg [voyager](papers/voyager.md)

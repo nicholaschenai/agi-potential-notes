@@ -33,7 +33,7 @@ multihop reasoning QA. Use API calls to search and lookup info as in ReAct. Eval
 - "both search and semantic feedback are crucial for better performance"
 ![](assets/Pasted%20image%2020240403121627.png)
 
-## WebShop
+## [WebShop](../benchmarks/webshop)
 - score: reflecting the percentage of user-specified attributes met by the selected product
 - success rate: exact match for all conditions
 
