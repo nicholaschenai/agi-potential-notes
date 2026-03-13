@@ -189,3 +189,14 @@ for session_key in session_keys[:3]:  # First 3 sessions
     timestamp = conv_data.get(f"{session_key}_date_time", "N/A")
     print(f"{session_key}: {len(session)} turns at {timestamp}")
 ```
+
+
+---
+
+## Update: Current SOTA
+As of Mar 2026
+- Most papers give evaluation metrics based on LLM-as-judge, which can vary depending on LLM and prompt used. 
+	- various memory systems, some proprietary, can score 80-90+ % via this
+- The original paper's metrics are used less, and so far doesn't seem to saturate
+- For LLM-as-judge, according to [DyCP](https://arxiv.org/pdf/2601.07994), GPT 4.1 full context can get 92% score
+	- still leaves out more recent models like GPT 5 series, Claude 4.5 series

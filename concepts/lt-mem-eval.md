@@ -1,4 +1,34 @@
 # Long term memory evaluation
+- [ATM-Bench](https://arxiv.org/abs/2603.01990)
+	- Img + Vid + Email
+	- Human-sourced data consisting of 12k chunks and 2.25m context
+	- 1.1k questions spanning 
+		- personalized referential reasoning
+		- location awareness
+		- mem update
+		- multi-session reasoning
+		- abstention
+	- Currently highest is 51.0 QS, on the hard split its 17.6
+- [Locomo-Plus](https://arxiv.org/abs/2602.10715v1)
+	- Synthetic with human QC
+	- tests questions which deliberately are not semantically similar to the memory snippet, requiring reasoning over implicit stuff (what they call cognitive memory)
+		- their problem statement: most mem eval only tests factual stuff which can be solved by retrieval due to similarity between question and memory chunk
+	- results in huge gap over locomo for same model performance, can be ~40%
+- [REALTALK](https://arxiv.org/abs/2502.13270)
+	- Real human conversation, largest one by far (~17k tokens / conversation)
+	- gpt 4o (~50-70+%) and 4o mini (~50+%) still can't answer QA to high accuracy when fully in context
+		- event-based memory usually works worse, especially multi-hop reasoning!
+- [AMA-Bench](https://arxiv.org/abs/2602.22769v1)
+	- real + synthetic agent trajectory QA
+	- tests areas like 
+		- recall
+		- causal inference
+		- state updating
+		- state abstraction
+	- on real world subset, 
+		- best average is 72.26% (GPT 5.2)
+		- avg 57.5k tokens, max 997k tokens
+	- shows that interestingly, long context is best all round performance compared to mem architecture
 - [longmemeval](../benchmarks/longmemeval.md) 
 	- 1.5m avg context length, 
 	- tests various areas like
@@ -23,8 +53,7 @@
 	- data creation is centered around events
 	- tests mem classification (semantic or episodic), retrieval and synthesis
 	- estimated 13k tokens per character, with 30 characters
-- Episodic memory benchmark
-	- EPISODIC MEMORIES GENERATION AND EVALUATION BENCHMARK FOR LARGE LANGUAGE MODELS
+- [Episodic memory benchmark](https://arxiv.org/abs/2501.13121)
 	- construction
 		- book with chapters. 
 		- each chapter is generated independently
