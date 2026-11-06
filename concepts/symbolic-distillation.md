@@ -16,6 +16,8 @@ Input: NN. output: NN + programs + knowledge, where the system performs similar 
 ### Mech interp 
 (for discovery/localization of knowledge and skills)
 - see [notes](../../interp-notes/README.md)
+## Symbolic Regression
+- [symtorch](../../../obsidian-main/lit-notes/symtorch.md)
 ## Potential approaches
 ### Discover then delete
 - find a circuit that can be represented by code

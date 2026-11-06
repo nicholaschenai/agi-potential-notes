@@ -35,7 +35,7 @@ Categories:
 - Category 1 (Multi-Hop)
 - Category 2 (Single-Hop)
 - Category 3 (Temporal)
-- Category 4 (Open-Domain)
+- Category 4 (Open-Domain) (need external knowledge)
 - Category 5 (Adversarial)
 
 ---

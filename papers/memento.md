@@ -31,7 +31,7 @@ is_public: true
 ![](assets/Pasted%20image%2020251003214856.png)
 
 - 95.0% accuracy on SimpleQA, setting a new SOTA
-- 24.4% PM on Humanity’s Last Exam (HLE), ranking second overall and nearing the performance of GPT-5.
+- 24.4% PM on Humanity’s Last Exam (HLE [HLE](../../../obsidian-main/lit-notes/HLE.md)), ranking second overall and nearing the performance of GPT-5.
 
 ---
 ## How it compares to previous work
